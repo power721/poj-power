@@ -3,9 +3,11 @@
 import com.pku.judgeonline.common.*;
 import com.pku.judgeonline.error.ErrorProcess;
 import com.pku.judgeonline.security.Guard;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
@@ -41,10 +43,9 @@ public class UserListServlet extends HttpServlet
 		s2 = request.getParameter("of2");
 		s3 = request.getParameter("od2");
 
-		if (s == null || !s.equals("score") && !s.equals("solved") && !s.equals("submit") && !s.equals("ratio"))
-			s = "score";
-		if (s == "solved")
+		if (s == null || !s.equals("submit") && !s.equals("ratio"))
 			s = "solved";
+		
 		if (s1 == null || !s1.equals("desc") && !s1.equals("asc"))
 			s1 = "desc";
 		String s4 = s;
@@ -82,8 +83,6 @@ public class UserListServlet extends HttpServlet
 		try
 		{
 			Connection connection = DBConfig.getConn();
-			PreparedStatement preparedstatement1;
-			ResultSet resultset1;
 			PreparedStatement preparedstatement2;
 			ResultSet resultset2;
 			FormattedOut.printHead(out, request, connection, "User List");
@@ -98,58 +97,24 @@ public class UserListServlet extends HttpServlet
 			out.print("<div align=center><table width=80% align=center><tr><td width=33%><font size=5><a href=onlineusers>Online Users</a></font></td><td width=34% align=center><font size=5><a href=recentrank>Recent Ranklist</a></font></td><td width=33% align=right><font size=5><a href=newuser>New Users</a></font></td></tr></table></div>");
 			out.println("<TABLE cellSpacing=0 cellPadding=0 align=center width=99% border=1 background=images/table_back.jpg style=\"border-collapse: collapse\" bordercolor=#FFFFFF>");
 			out.println("<tr align=center bgcolor=#6589D1>");
-			out.println("<td width=\"5%\" ><b>No.</b></td>");
-			out.println("<td width=\"10%\" ><b>User ID</b></td>");
-			out.println("<td width=\"45%\" ><b>Nick Name</b></td>");
-			out.println("<td width=\"10%\" ><a href=userlist><b><font color=white>Scores</font></b></a></td>");
-			out.println("<td width=\"10%\" ><a href=userlist?of1=solved&od1=desc&of2=score&od2=asc><b><font color=white>Solved Problems</font></b></a></td>");
-			out.println("<td width=\"10%\" ><a href=userlist?of1=submit&od1=desc&of2=solved&od2=asc><b><font color=white>Submit</font></b></a></td>");
-			out.println("<td width=\"10%\"><a href=userlist?of1=ratio&od1=desc&of2=solved&od2=desc><b><font color=white>Ratio (AC/submit)</font></b></a></td>");
+			out.println("<th width=\"5%\" ><b>No.</b></th>");
+			out.println("<th width=\"20%\" ><b>User ID</b></th>");
+			out.println("<th width=\"45%\" ><b>Nick Name</b></th>");
+			//out.println("<td width=\"10%\" ><a href=userlist><b><font color=white>Scores</font></b></a></td>");
+			out.println("<th width=\"10%\" ><a href=userlist?of1=solved&od1=desc&of2=score&od2=asc><b><font color=white>Solved Problems</font></b></a></th>");
+			out.println("<th width=\"10%\" ><a href=userlist?of1=submit&od1=desc&of2=solved&od2=asc><b><font color=white>Submit</font></b></a></th>");
+			out.println("<th width=\"10%\"><a href=userlist?of1=ratio&od1=desc&of2=solved&od2=desc><b><font color=white>Ratio (AC/submit)</font></b></a></th>");
 			out.println("</tr>");
 			try
 			{
 				int i = 1;
-
-				preparedstatement = connection.prepareStatement((new StringBuilder()).append("SELECT * FROM users WHERE UPPER(defunct) = 'N' ORDER BY ").append(s == "score" ? "solved" : s).append(" ").append(s1).append(",").append(s2).append(" ").append(s3).append(" limit ?,?").toString());
+				String sql = (new StringBuilder()).append("SELECT * FROM users WHERE UPPER(defunct) = 'N' ORDER BY ").append(/*s == "score" ? "solved" : */s).append(" ").append(s1).append(",").append(s2).append(" ").append(s3).append(" limit ?,?").toString();
+				
+				preparedstatement = connection.prepareStatement(sql);
 				preparedstatement.setLong(1, l);
-				preparedstatement.setLong(2, l1 + l1 / 2);
+				preparedstatement.setLong(2, l1);
 				resultset = preparedstatement.executeQuery();
-				preparedstatement1 = connection.prepareStatement("select problem_id,submit_user,solved from problem where solved>0 and UPPER(defunct) = 'N'");
-				resultset1 = preparedstatement1.executeQuery();
-				double score[] = new double[5005];
-				while (resultset1.next())
-				{
-					score[resultset1.getInt("problem_id") - 1000] = resultset1.getInt("submit_user") / (double) resultset1.getInt("solved");
-					// if(resultset1.getInt("submit_user")==1)
-					// score[resultset1.getInt("problem_id")-1000]++;
-				}
-				while (resultset.next())
-				{
-					String user = resultset.getString("user_id");
-					Double scores = 0.0;
-					preparedstatement1 = connection.prepareStatement("select problem_id from solution where user_id=? and result=0 group by problem_id");
-					preparedstatement1.setString(1, user);
-					resultset1 = preparedstatement1.executeQuery();
-					while (resultset1.next())
-					{
-						int problem_id = resultset1.getInt("problem_id");
-						if (problem_id >= 1000)
-							scores += score[problem_id - 1000];
-					}
-					preparedstatement1 = connection.prepareStatement("select accepts from attend where user_id=?");
-					preparedstatement1.setString(1, user);
-					resultset1 = preparedstatement1.executeQuery();
-					while (resultset1.next())
-					{
-						scores += resultset1.getInt("accepts");
-					}
-					preparedstatement1 = connection.prepareStatement("update users set score=? where user_id=?");
-					preparedstatement1.setDouble(1, scores);
-					preparedstatement1.setString(2, user);
-					preparedstatement1.executeUpdate();
-
-				}
-				// resultset.beforeFirst();
+				
 				preparedstatement = connection.prepareStatement((new StringBuilder()).append("SELECT * FROM users WHERE UPPER(defunct) = 'N' ORDER BY ").append(s).append(" ").append(s1).append(",").append(s2).append(" ").append(s3).append(" limit ?,?").toString());
 				preparedstatement.setLong(1, l);
 				preparedstatement.setLong(2, l1);
@@ -163,7 +128,7 @@ public class UserListServlet extends HttpServlet
 					int k = resultset.getInt("solved");
 					int i1 = resultset.getInt("submit");
 					String s7 = resultset.getString("nick");
-					String sco = null;
+					//String sco = null;
 					int j1 = 0;
 
 					if (i1 != 0)
@@ -184,10 +149,6 @@ public class UserListServlet extends HttpServlet
 						out.println((new StringBuilder()).append("<td class=\"user\"><a href=userstatus?user_id=").append(s6).append(">").append(s6).append("</a></td>").toString());
 
 					out.println((new StringBuilder()).append("<td class=\"nick\"><font color=green>").append(Tool.titleEncode(connection, s6, s7)).append("</font></td>").toString());
-					// sco = scores.toString();
-
-					sco = resultset.getString("score");
-					out.println("<td>" + sco.substring(0, sco.indexOf(".") + 2) + "</td>");
 					out.println((new StringBuilder()).append("<td><a href=status?result=0&user_id=").append(s6).append(">").append(k).append("</a></td>").toString());
 					out.println((new StringBuilder()).append("<td><a href=status?user_id=").append(s6).append(">").append(i1).append("</a></td>").toString());
 					out.println((new StringBuilder()).append("<td>").append(j1).append("%</td>").toString());

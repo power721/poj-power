@@ -14,6 +14,7 @@ import java.util.Properties;
 
 public class ServerConfig
 {
+	public static long startTimestamp;
 	private static Properties _$1612;
 	@SuppressWarnings("unused") private static Properties _$1613;
 	private static String _$1614 = "C:\\judgeonline\\server.config";

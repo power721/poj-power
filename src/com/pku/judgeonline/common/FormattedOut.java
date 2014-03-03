@@ -2,9 +2,11 @@ package com.pku.judgeonline.common;
 
 import com.pku.judgeonline.error.ErrorProcess;
 import com.pku.judgeonline.user.Login;
+
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.*;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class FormattedOut
@@ -15,7 +17,9 @@ public class FormattedOut
 
 	public static void printSimpleHead(PrintWriter out, String s)
 	{
+		ServerConfig.startTimestamp = System.currentTimeMillis();
 		if (s == null)
+		{
 			try
 			{
 				s = new String(ServerConfig.DEFAULT_TITLE.getBytes("ISO8859_1"), "UTF-8");
@@ -23,6 +27,7 @@ public class FormattedOut
 			{
 				e.printStackTrace();
 			}
+		}
 			//out.println("<!DOCTYPE HTML>");
 			out.println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
 			out.println(" <head>");
@@ -166,7 +171,6 @@ public class FormattedOut
 */
 	public static void printHead(PrintWriter out, HttpServletRequest request, Connection connection, String s)
 	{
-
 		printSimpleHead(out, s);
 		printNavigation(out);
 		out.println("       <td class=\"Navigation\">");
@@ -296,17 +300,19 @@ public class FormattedOut
 		out.println("     <div class=\"copyright\">");
 		out.println("       <a href=\"http://code.google.com/p/poj-power/\" target=\"balnk\">Power OJ Rev.20131117</a>|");
 		out.println("       <a href=\"faq.htm\">F.A.Q</a>|");
-		out.println("       <span id=\"divPageLoadTime\"></span><br>");
+		out.println("       <span id=\"divPageLoadTime\">");
+		out.println(System.currentTimeMillis() - ServerConfig.startTimestamp);
+		out.println(" ms</span><br>");
 		out.println("       All Copyright Reserved 2010-2012 <a href=mailto:power0721@gmail.com><b>power721</b></a><br>");
 		out.println(new StringBuilder().append("       Any problem, Please <a href=mailto:").append(ServerConfig.getValue("AdminEmail")).append(">Contact Administrator</a>").toString());
 		out.println("     </div>");
 		out.println("   </div><!-- div footer -->\n");
-		out.println("   <script language=\"javascript\" type=\"text/javascript\">");
-		out.println("     var endT=new Date();");
-		out.println("     var endTime=endT.getTime();");
-		out.println("     var spTime=(endTime-beginTime);");
-		out.println("     $('#divPageLoadTime').html('Excute:'+spTime+'ms');");
-		out.println("   </script>");
+		//out.println("   <script language=\"javascript\" type=\"text/javascript\">");
+		//out.println("     var endT=new Date();");
+		//out.println("     var endTime=endT.getTime();");
+		//out.println("     var spTime=(endTime-beginTime);");
+		//out.println("     $('#divPageLoadTime').html('Excute:'+spTime+'ms');");
+		//out.println("   </script>");
 		out.println(" </body>");
 		out.println("</html>");
 	}
