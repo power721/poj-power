@@ -9,7 +9,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import com.pku.judgeonline.common.DBConfig;
-import com.pku.judgeonline.common.Tool;
 import com.pku.judgeonline.common.UserModel;
 
 public class OnlineListener implements ServletContextListener, ServletContextAttributeListener, HttpSessionListener, HttpSessionAttributeListener, ServletRequestListener
@@ -139,8 +138,8 @@ public class OnlineListener implements ServletContextListener, ServletContextAtt
 		if (s != null && s != "")
 		{
 			Connection connection = DBConfig.getConn();
-			String ip = getRemortIP(request);
-			String agent = request.getHeader("User-Agent");
+			//String ip = getRemortIP(request);
+			//String agent = request.getHeader("User-Agent");
 			String id = httpsessionbindingevent.getSession().getId();
 			try
 			{
@@ -152,14 +151,14 @@ public class OnlineListener implements ServletContextListener, ServletContextAtt
 				while(resultset.next())
 				{
 					String session_id = resultset.getString("session_id");
-					String ip_address = resultset.getString("ip_address");
+					//String ip_address = resultset.getString("ip_address");
 					HttpSession session = map.get(session_id);
 					session.invalidate();
-					String title = s + " login repeatedly";
-					String content = "Old  IP: " + ip_address + "\nNew IP: " + ip + "\n";
-					Tool.sendMail(connection, "System", s, title, "此消息也会发给管理员，请不要在比赛过程中重复登录。\n如果非本人登录，请修改密码以保证安全。\n"+content, 0);
-					content += "Old  Agent: "+resultset.getString("user_agent")+"\nNew Agent: "+agent;
-					Tool.sendMail(connection, "System", "root;power721", title, content, 0);
+					//String title = s + " login repeatedly";
+					//String content = "Old  IP: " + ip_address + "\nNew IP: " + ip + "\n";
+					//Tool.sendMail(connection, "System", s, title, "此消息也会发给管理员，请不要在比赛过程中重复登录。\n如果非本人登录，请修改密码以保证安全。\n"+content, 0);
+					//content += "Old  Agent: "+resultset.getString("user_agent")+"\nNew Agent: "+agent;
+					//Tool.sendMail(connection, "System", "root;power721", title, content, 0);
 				}
 				preparedstatement.close();
 				resultset.close();
