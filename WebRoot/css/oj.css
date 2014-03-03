@@ -1,0 +1,508 @@
+﻿@charset "utf-8";
+	a:link {
+	text-decoration:none;
+}
+a:visited {
+	text-decoration:none;
+	color:#00C;
+}
+a:hover {
+	background-color:#DFE1E3;
+}
+a:active {
+	text-decoration:none;
+}
+img {
+	vertical-align:middle;
+}
+body {
+	background-image:url(bg.jpg);
+	background-color:;
+	margin:0;
+	/* 最好将 body 元素的边距和填充设置为 0 以覆盖不同的浏览器默认值 */
+	text-align:center;
+	/* 在 IE 5* 浏览器中，这会将容器居中。文本随后将在 #container 选择器中设置为默认左对齐 */
+	font-family:"Times New Roman";
+}
+.search-box {
+	position:relative;
+	margin-top:120px;
+	margin-right:20px;
+	display:block;
+	float:right;
+	text-align:right;
+	white-space:nowrap;
+	/* For Opera */
+}
+.buttons {
+	color:#222;
+	background:#D8E8F6;
+	height:25px;
+	cursor:pointer;
+	border:1px solid #8888FF;
+	float:left;
+}
+.input {
+	height:20px;
+	width:100px;
+	background-color:#F0F0FF;
+	border:1px solid #A99FFD;
+	font-size:16px;
+}
+
+table {
+	border:0px;
+	border-collapse:collapse;
+	margin-bottom:10px;
+	margin-top:10k-all;
+}
+table.problem {
+	border:0px;
+	border-collapse:collapse;
+	margin-bottom:10px;
+	margin-top:10k-all;
+	TABLE-LAYOUT:fixed;
+	word-break:break-all;
+}
+
+th {
+	border:1px solid white;
+	text-align:center;
+	font-size:18;
+	background:#5D7B9D;
+}
+th.head {
+	color: white;
+}
+td {
+	border:1px solid white;
+	text-align:;
+	font-size:18;
+}
+td.no
+{
+	border:0;
+	text-align:;
+	font-size:18;
+}
+td.status
+{
+color:white;
+}
+div.panel_content {
+	height:auto;
+	background:url(panel-content.png) repeat-y;
+	margin:0;
+	padding:0 20px;
+	font-size:14px;
+	font-family:Times New Roman;
+	text-align:left
+}
+div.panel_title {
+	height:38px;
+	background:transparent url(panel-title.png) left bottom no-repeat;
+	padding:0 14px;
+	color:#7CA9ED;
+	font-size:18px;
+	font-family:Arial;
+	font-weight:bold
+}
+div.panel_bottom {
+	height:auto;
+	margin:0;
+	background:url(panel-bottom.png) left top no-repeat
+}
+/*div.panel_content pre {
+	margin:0;
+	font-size:14px
+}*/
+div.footer {
+	text-align: center;
+	
+}
+div.source {
+  text-align: left;
+  width: 570px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 18px
+}
+div#error-page {
+	width: 600px;
+	BACKGROUND-COLOR: #000000;
+	margin-right: auto;
+  	margin-left: auto;
+}
+.twoColFixLtHdr #container {
+	width:980px;
+	/* 使用比最大宽度 (800px) 小 20px 的宽度可显示浏览器界面元素，并避免出现水平滚动条 */
+	margin:auto;
+	/* 自动边距（与宽度一起）会将页面居中 */
+	text-align:left;
+	/* 这将覆盖 body 元素上的“text-align:center”。 */
+}
+.twoColFixLtHdr #header {
+	background-image:url(images/logo.png);
+	background-repeat:no-repeat;
+	width:980px;
+	height:50px;
+}
+.twoColFixLtHdr #pagetitle {
+	font-size:22px;
+	color:#00F;
+	text-align:center;
+	vertical-align:middle
+}
+.twoColFixLtHdr #tr1 {
+	background-color:#cce2f9;
+	color:#000;
+	height:25px;
+}
+.twoColFixLtHdr #tr2 {
+	background-color:#FFF;
+	color:#000;
+	height:25px;
+}
+.twoColFixLtHdr #header h1 {
+	margin:0;
+	/* 将 #header div 中最后一个元素的边距设置为零将避免边距重叠（即 div 之间出现的无法解释的空白）。如果 div 周围有边框，则不必将边距设置为零，因为边框也会避免边距重叠 */
+}
+.twoColFixLtHdr #sidebar1 {
+	float:left;
+	/* 由于此元素是浮动的，因此必须指定宽度 */
+	width:180px;
+	/* 在符合标准的浏览器中或者在 Internet Explorer 中的标准模式下，此 div 的实际宽度除了包括宽度外，还包括填充和边框 */
+}
+.twoColFixLtHdr #sidebar2 {
+	float:left;
+	/* 由于此元素是浮动的，因此必须指定宽度 */
+}
+.twoColFixLtHdr #smallBox,#bigBox {
+	margin-left:5px;
+	/* 对于将要放在侧栏中的每个元素，都应当设置左边距和右边距 */
+	margin-right:5px;
+}
+.twoColFixLtHdr #smallBox h5 {
+	color:#FFF;
+	background-image:url(images/postBoxTitleBlue.gif);
+	background-repeat:no-repeat;
+	padding-left:20px;
+	padding-top:5px;
+	height:26px;
+}
+.twoColFixLtHdr #bigBox h5 {
+	color:#FFF;
+	background-image:url(images/postBoxTitleBlueBig.gif);
+	background-repeat:no-repeat;
+	padding-left:20px;
+	padding-top:5px;
+	height:26px;
+}
+.twoColFixLtHdr #boxContent {
+	padding:20px;
+	margin-top:-24px;
+	font-size:15px;
+	color:#006;
+	background-color:#FFF;
+	-moz-border-radius:7px;
+	-moz-border-bottom-colors:#518BCA #518BCA;
+	-moz-border-top-colors:#518BCA #518BCA;
+	-moz-border-left-colors:#518BCA #518BCA;
+	-moz-border-right-colors:#518BCA #518BCA;
+	-moz-border-top-colors:#518BCA #518BCA;
+	border-left:2px solid #518BCA;
+	border-right:2px solid #518BCA;
+	border-bottom:2px solid #518BCA;
+}
+.twoColFixLtHdr #mainContent {
+	float:right;
+	width:790px;
+}
+.twoColFixLtHdr #footer {
+	padding:0 10px 0 20px;
+	/* 此填充会将它上面 div 中的所有元素左对齐。 */
+	color:#333;
+}
+.twoColFixLtHdr #footer p {
+	margin:0;
+	/* 将脚注中第一个元素的边距设置为零将避免出现可能的边距重叠（即 div 之间出现的空白）*/
+	padding:10px 0;
+	/* 就像边距会产生空白一样，此元素上的填充也将产生空白，但不会出现边距重叠问题 */
+}
+.twoColFixLtHdr #probTitle {
+	font-size:22px;
+	text-align:center;
+	color:#006;
+}
+.twoColFixLtHdr #probCont {
+	font-size:16px;
+	color:#000;
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:transparent url(images/panel-content.png) repeat-y scroll 0 0;
+	font-family:Times New Roman;
+	font-size:14px;
+	height:auto;
+	margin:0;
+	padding:0 20px;
+	text-align:left;
+}
+.twoColFixLtHdr #probCont p {
+	margin-top:0px;
+	margin-bottom:0px;
+}
+.twoColFixLtHdr #probData p {
+	margin-top:0px;
+	margin-bottom:0px;
+}
+.twoColFixLtHdr #probSubBottom {
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:transparent url(images/panel-bottom.png) no-repeat scroll left top;
+	height:auto;
+	margin:0;
+}
+.twoColFixLtHdr #probSubTitle {
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:transparent url(images/panel-title.png) no-repeat scroll left bottom;
+	color:#00C;
+	font-size:18px;
+	font-weight:bold;
+	height:38px;
+	padding:0 14px;
+}
+.twoColFixLtHdr #probData {
+	font-size:16px;
+	color:#000;
+	font-family:"Courier New";
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:transparent url(images/panel-content.png) repeat-y scroll 0 0;
+	font-size:14px;
+	height:auto;
+	margin:0;
+	padding:0 20px;
+	text-align:left;
+}
+.fltrt {
+	/* 此类可用来使页面中的元素向右浮动。浮动元素必须位于页面上要与之相邻的元素之前。 */
+	float:right;
+	margin-left:8px;
+}
+.fltlft {
+	/* 此类可用来使页面上的元素向左浮动 */
+	float:left;
+	margin-right:8px;
+}
+.clearfloat {
+	/* 此类应当放在 div 或 break 元素上，而且该元素应当是完全包含浮动的容器关闭之前的最后一个元素 */
+	clear:both;
+	height:0;
+	font-size:1px;
+	line-height:0px;
+}
+/*POJ CSS*/
+A {
+	TEXT-TRANSFORM:none;
+	TEXT-DECORATION:none
+}
+A:hover {
+	COLOR:red;
+	TEXT-DECORATION:underline
+}
+A.s {
+	TEXT-TRANSFORM:none;
+	TEXT-DECORATION:none;
+	color:black;
+}
+A.s:hover {
+	COLOR:white;
+	TEXT-DECORATION:none;
+}
+A.s0 {
+	TEXT-TRANSFORM:none;
+	TEXT-DECORATION:none;
+	color:#FFFF99;
+	font-weight:bold;
+}
+A.s0:hover {
+	TEXT-DECORATION:underline;
+	color:#FFFF99;
+	font-weight:bold;
+}
+A.t {
+	TEXT-DECORATION:none;
+	color:#FFFF66;
+}
+A.t:hover {
+	color:#FFFF66;
+	text-decoration:underline;
+}
+A.x {
+	TEXT-DECORATION:none;
+	color:white;
+	font-weight:bold;
+}
+A.x:hover {
+	color:#FFFF66;
+	text-decoration:underline;
+	font-weight:bold;
+}
+A.bt {
+	padding:2px 3px 2px 3px;
+	margin:0px;
+	height:20px;
+	color:blue;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+}
+A.bt:hover {
+	background-color:#E6E6E6;
+	padding:1px 2px;
+	margin:0px;
+	border:1px solid #999;
+	height:20px;
+	color:#000066;
+	text-decoration:none;
+	cursor:hand;
+}
+div.sd1 {
+	position:absolute;
+	left:0px
+}
+div.sd2 {
+	position:absolute;
+	right:0px
+}
+div.ptt {
+	text-align:center;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:18pt;
+	font-weight:bold;
+	color:blue;
+}
+div.plm {
+	text-align:center;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:12pt;
+}
+div.ptx {
+	font-family:"Times New Roman",Times,serif;
+	font-size:12pt;
+}
+p.pst {
+	text-align:left;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:18pt;
+	font-weight:bold;
+	color:blue;
+}
+/*pre.sio {
+	font-family:Courier New,Courier,monospace;
+	font-size:12pt;
+}*/
+th.h {
+	color:#FFFFFF;
+	font-family:Arial,Helvetica,sans-serif;
+	width:20%;
+}
+td.h {
+	font-family:Arial,Helvetica,sans-serif;
+}
+th.in {
+	color:#FFFFFF;
+	text-align:center;
+	background-color:#6589d1;
+	border-color:#FFFFFF;
+	font-family:Arial,Helvetica,sans-serif;
+	font-weight:bold;
+}
+table.a {
+	/*background-image:url('images/table_back.jpg');*/
+	border-collapse:collapse;
+	font-family:"Times New Roman",Times,serif;
+}
+table.h1 {
+	border-collapse:collapse;
+	width:100%;
+	background-color:#BECEF1;
+	border-width:0px;
+}
+table.h2 {
+	width:100%;
+	/*background:url('bar.jpg') repeat-y;*/
+	border-width:0px;
+}
+tr.in {
+	color:#FFFFFF;
+	text-align:center;
+	background-color:#6589d1;
+	font-family:Arial,Helvetica,sans-serif;
+	font-weight:bold;
+}
+tr.h {
+	background-color:#6589d1;
+	vertical-align:top;
+	color:#FFFFFF;
+	font-family:Arial,Helvetica,sans-serif;
+}
+tr.reply-mail {
+	font-style: italic;
+}
+table.mail td {
+	padding:2px 3px 2px 3px;
+}
+span.b1 {
+	color:#6589D1;
+	font-weight:bold;
+	font-size:x-small
+}
+span.b2 {
+	color:gray;
+	font-size:x-small
+}
+span.n1 {
+	color:red;
+	font-size:x-small
+}
+ul.v {
+	filter:Alpha(opacity=100);
+	overflow:hidden;
+}
+table.survey {
+	border-collapse:collapse;
+	font-family:"Times New Roman",Times,serif;
+}
+.stdft {
+	font-family:"Times New Roman",Times,serif;
+}
+span.h_txt {
+	color:blue;
+}
+span.h_award {
+	color:red;
+}
+span.h_nocontest {
+	color:#1a5cc8;
+}
+span.h_contest {
+	color:red;
+}
+/*POJ CSS*/
+
+div pre {
+/*word-break:break-all;*/
+word-wrap:break-word; 
+word-break:normal;
+  white-space:pre-wrap; /* css-3 */
+  white-space:-moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space:-pre-wrap; /* Opera 4-6 */
+  white-space:-o-pre-wrap; /* Opera 7 */
+  word-wrap:break-word; /* Internet Explorer 5.5+ */
+  -moz-binding: url('./wordwrap.xml#wordwrap'); /* 再多这行 */
+  }

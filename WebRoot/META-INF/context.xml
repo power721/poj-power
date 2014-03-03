@@ -1,0 +1,9 @@
+﻿<Context docBase="poj-power" reloadable="true">
+
+<Resource name="jdbc/PojDB" auth="Container" type="javax.sql.DataSource"
+               maxActive="500" maxIdle="50" maxWait="20000"
+               username="oj_admin" password="swust_acm@2013" driverClassName="com.mysql.jdbc.Driver"
+			   removeAbandoned="true" removeAbandonedTimeout="60" logAbandoned="true"
+               url="jdbc:mysql://localhost:33066/poj-power?autoReconnect=true"/>
+</Context>
+
