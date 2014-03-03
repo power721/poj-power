@@ -2,8 +2,8 @@ package com.pku.judgeonline.admin.common;
 
 import com.pku.judgeonline.admin.servlet.LoginServlet;
 import com.pku.judgeonline.common.ServerConfig;
+
 import java.io.PrintWriter;
-import javax.servlet.jsp.JspWriter;
 
 public class FormattedOut
 {
@@ -16,6 +16,7 @@ public class FormattedOut
 
 	public static void printHead(PrintWriter out, String s)
 	{
+		ServerConfig.startTimestamp = System.currentTimeMillis();
 		if (s == null)
 			s = DEFAULT_TITLE;
 		out.println("<html>");
@@ -51,64 +52,28 @@ public class FormattedOut
 
 	public static void printBottom(PrintWriter out)
 	{
+		//out.println("   </div><!-- div main -->\n");
 		out.println((new StringBuilder()).append("    <p><img height=\"29\" src=\"images/j0293234.wmf\" width=\"40\" border=\"0\">").toString());
 		out.println((new StringBuilder()).append("    <font  size=\"3\"><a href=\"").append(LoginServlet.Admin_Index).append("\">Admin's Home Page</a> </font><br>").toString());
 		out.println((new StringBuilder()).append("    <p><img height=\"29\" src=\"images/j0293234.wmf\" width=\"40\" border=\"0\">").toString());
 		out.println((new StringBuilder()).append("    <font  size=\"3\"><a href=\"").append(".").append("\">Home Page</a> </font><br>").toString());
-		out.println("    <hr>");
-		out.println("    <p align=\"center\"><font  size=\"3\">All Copyright Reserved 2010-2014<br>");
-		out.println((new StringBuilder()).append("Any problem, Please <a href=\"mailto:").append(ServerConfig.getValue("AdminEmail")).append("\">Contact Administrator</a></font></p>").toString());
-		out.println("  </body>\n</html>");
-	}
-
-	public static void printHead(JspWriter jspwriter, String s)
-	{
-		if (s == null)
-			s = DEFAULT_TITLE;
-		try
-		{
-			jspwriter.println("<html>");
-			jspwriter.println("<head>");
-			jspwriter.println("<meta http-equiv=\"Pragma\" content=\"no-cache\">");
-			jspwriter.println("<meta http-equiv=\"Cache-Control\" content=\"no-cache\">");
-			jspwriter.println("<meta http-equiv=\"Cache-Control\" max-age=\"0\">");
-			jspwriter.println("<META HTTP-EQUIV=\"Expires\" CONTENT=\000\">");
-			jspwriter.println("<meta http-equiv=\"Content-Language\" content=\"zh-cn\">");
-			jspwriter.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
-			jspwriter.println((new StringBuilder()).append("<title>").append(s).append("</title>").toString());
-			jspwriter.println("</head>\n");
-			jspwriter.println("<body leftmargin=\"30\">");
-			jspwriter.println("<div align=\"center\">");
-			jspwriter.println("<center>");
-			jspwriter.println("<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse:collapse\"  width=\"99%\" height=\"50\">");
-			jspwriter.println("<tr>");
-			jspwriter.println("<td width=\"100\">");
-			jspwriter.println((new StringBuilder()).append("<img border=\"0\"src=\"images/pku_logol.jpg\"width=\"65\"height=\"65\"></td>").toString());
-			jspwriter.println("<td>");
-			jspwriter.println((new StringBuilder()).append("<p align=\"center\"><font color=\"#333399\" size=\"4\">").append(DEFAULT_TITLE).append("</font></td>").toString());
-			jspwriter.println("<td width=\"100\"></td>");
-			jspwriter.println("</tr>");
-			jspwriter.println("</table>");
-			jspwriter.println("</center>");
-			jspwriter.println("</div><hr>");
-		} catch (Exception exception)
-		{
-		}
-	}
-
-	public static void printBottom(JspWriter jspwriter)
-	{
-		try
-		{
-			jspwriter.println((new StringBuilder()).append("<p><img height=\"29\" src=\"images/j0293234.wmf\" width=\"40\" border=\"0\">").toString());
-			jspwriter.println((new StringBuilder()).append("<font  size=\"3\"><a href=\"").append(LoginServlet.Admin_Index).append("\">Admin's Home Page</a> </font><br>").toString());
-			jspwriter.println("<hr>");
-			jspwriter.println("<p align=\"center\"><font  size=\"3\">All Copyright Reserved 2010<br>");
-			jspwriter.println((new StringBuilder()).append("Any problem, Please <a href=\"mailto:").append(ServerConfig.getValue("AdminEmail")).append("\">Contact Administrator</a></font></p>").toString());
-			jspwriter.println("</body></html>");
-		} catch (Exception exception)
-		{
-		}
+		out.println("   <center><div class=\"footer\">");
+		out.println("     <img height=29 src=\"images/home.jpg\" width=40 border=0><a href=.>Home Page</a>&nbsp;&nbsp;");
+		out.println("     <img height=29 src=\"images/goback.jpg\" width=40 border=0><a href=\"javascript:history.go(-1)\">Go Back</a>&nbsp;&nbsp;");
+		out.println("     <img height=29 width=40 border=0 src=\"images/top.jpg\"><a href=\"#top\" target=\"_self\">To top</a>");
+		out.println("     <br><hr>");
+		out.println("     <div class=\"copyright\">");
+		out.println("       <a href=\"http://git.oschina.net/power/poj-power.git\" target=\"_balnk\">Power OJ Rev.20140303</a>|");
+		out.println("       <a href=\"faq.htm\">F.A.Q</a>|");
+		out.println("       <span id=\"divPageLoadTime\">");
+		out.println(System.currentTimeMillis() - ServerConfig.startTimestamp);
+		out.println(" ms</span><br>");
+		out.println("       All Copyright Reserved 2010-2012 <a href=mailto:power0721@gmail.com><b>power721</b></a><br>");
+		out.println(new StringBuilder().append("       Any problem, Please <a href=mailto:").append(ServerConfig.getValue("AdminEmail")).append(">Contact Administrator</a>").toString());
+		out.println("     </div>");
+		out.println("   </div></center><!-- div footer -->\n");
+		out.println(" </body>");
+		out.println("</html>");
 	}
 
 }

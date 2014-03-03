@@ -119,8 +119,8 @@ public class ShowProblemServlet extends HttpServlet
 				String s = Tool.gethtmlFormattedString(resultset.getString("source"));
 				out.println((new StringBuilder()).append("<a href=\"searchproblem?sstr=").append(s).append("&manner=2\">").append(s).append("</a>").toString());
 				out.println("<p>");
-				out.println("<font color=\"#333399\" size=\"5\"><font size=\"5\">");
-				out.println("</font>");
+				//out.println("<font color=\"#333399\" size=\"5\">");
+				//out.println("</font>");
 				out.println("<font color=\"#333399\" size=\"3\"><p align=\"center\">");
 				String s1 = resultset.getString("defunct");
 				if (s1 != null && s1.equals("N"))

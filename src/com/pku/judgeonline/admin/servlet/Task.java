@@ -1,6 +1,7 @@
 ﻿package com.pku.judgeonline.admin.servlet;
 
 import com.pku.judgeonline.admin.common.FormattedOut;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pku.judgeonline.common.Tool;
 import com.pku.judgeonline.common.UserModel;
+import com.pku.judgeonline.error.ErrorProcess;
 
 public class Task extends HttpServlet
 {
@@ -82,7 +84,15 @@ public class Task extends HttpServlet
 			cmd = "tasklist /V /FI \"IMAGENAME eq Main.exe\"";
 		}
 		String op = "";
-		Process pro = Runtime.getRuntime().exec(cmd);
+		Process pro = null;
+		try
+		{
+			pro = Runtime.getRuntime().exec(cmd);
+		} catch (IOException e)
+		{
+			ErrorProcess.ExceptionHandle(e, out);
+			return;
+		}
 		BufferedReader bfr = new BufferedReader(new InputStreamReader(pro.getInputStream()));
 		long pid = 0;
 		out.println("<div style=\"margin:20px\" class=\"task-list\" width=%80>");
