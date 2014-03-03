@@ -298,7 +298,7 @@ public class FormattedOut
 		out.println("     <img height=29 width=40 border=0 src=\"images/top.jpg\"><a href=\"#top\" target=\"_self\">To top</a>");
 		out.println("     <br><hr>");
 		out.println("     <div class=\"copyright\">");
-		out.println("       <a href=\"http://code.google.com/p/poj-power/\" target=\"balnk\">Power OJ Rev.20131117</a>|");
+		out.println("       <a href=\"http://git.oschina.net/power/poj-power.git\" target=\"_balnk\">Power OJ Rev.20140303</a>|");
 		out.println("       <a href=\"faq.htm\">F.A.Q</a>|");
 		out.println("       <span id=\"divPageLoadTime\">");
 		out.println(System.currentTimeMillis() - ServerConfig.startTimestamp);
@@ -307,12 +307,6 @@ public class FormattedOut
 		out.println(new StringBuilder().append("       Any problem, Please <a href=mailto:").append(ServerConfig.getValue("AdminEmail")).append(">Contact Administrator</a>").toString());
 		out.println("     </div>");
 		out.println("   </div><!-- div footer -->\n");
-		//out.println("   <script language=\"javascript\" type=\"text/javascript\">");
-		//out.println("     var endT=new Date();");
-		//out.println("     var endTime=endT.getTime();");
-		//out.println("     var spTime=(endTime-beginTime);");
-		//out.println("     $('#divPageLoadTime').html('Excute:'+spTime+'ms');");
-		//out.println("   </script>");
 		out.println(" </body>");
 		out.println("</html>");
 	}
