@@ -362,9 +362,10 @@ public class ContestStatus extends HttpServlet
 				preparedstatement.setLong(1, l);
 				resultset = preparedstatement.executeQuery();
 				out.print("<select name=problem_id size=1>");
+				out.print("<option value=\"\" " + (s!="" ? "select" : "") + ">All</option>");
 				for(;resultset.next();)
 				{
-					out.print("<option value=\"" +  resultset.getInt("num") + "\"" + (resultset.getInt("num")==pid?" selected":"") + ">" + (char)(resultset.getInt("num")+65) + ". " + resultset.getString("title") + "</option>");
+					out.print("<option value=\"" +  resultset.getInt("num") + "\"" + (s!=""&&resultset.getInt("num")==pid?" selected":"") + ">" + (char)(resultset.getInt("num")+65) + ". " + resultset.getString("title") + "</option>");
 				}
 				out.print("</select>");
 				resultset.close();

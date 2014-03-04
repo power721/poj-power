@@ -250,7 +250,7 @@ public class ShowSource extends HttpServlet
 			PrintWriter.println("<font color=#006600>Language:</font>" + (Object4 = LanguageType.getDesc(ResultSet1.getInt("language"))) + "&nbsp;&nbsp;<font color=#006600>Result:</font><font color=red>" + ResultType.getResultDescript(ResultSet1.getInt("result")) + "</font>");
 			CEflag = ResultType.getResult(ResultSet1.getInt("result")).equals("CE");
 			boolean bool2 = UserModel.isAdminLoginned(paramHttpServletRequest);
-			str7 = "<a href=admin.rejudge?solution_id=" + str1 + "&contest_id=" + cstr + "><font color=red><u>Rejudge</u></font></a>";
+			str7 = "<a href=admin.rejudge?solution_id=" + str1 + (cstr==null ? "" : "&contest_id=" + cstr) + "><font color=red><u>Rejudge</u></font></a>";
 			if (bool2)
 				PrintWriter.println("<br>" + str7);
 			PrintWriter.println("<ul><li><font color=#333399 size=5>Source</font></li></ul></center>");
@@ -279,6 +279,9 @@ public class ShowSource extends HttpServlet
 			PrintWriter.println("<textarea class='brush: " + str8 + "'>");
 			PrintWriter.println((String) Object5);
 			PrintWriter.println("</textarea>");
+			PrintWriter.println("<script>");
+			PrintWriter.println((String) Object5);
+			PrintWriter.println("</script>");
 			PrintWriter.println("<script language='javascript' type='text/javascript'>SyntaxHighlighter.config.tagName = 'textarea';SyntaxHighlighter.all();</script>");
 			if (CEflag)
 			{
@@ -293,18 +296,7 @@ public class ShowSource extends HttpServlet
 				}
 				PrintWriter.println("</div>");
 			}
-			/*if (UserModel.isLoginned(paramHttpServletRequest))
-			{
-				UserModel usermodel = UserModel.getCurrentUser(paramHttpServletRequest);
-				String ss = paramHttpServletRequest.getRequestURI();
-				String ss1 = paramHttpServletRequest.getQueryString();
-				if (ss1 != null)
-					ss = ss + "?" + ss1;
-				PreparedStatement1 = Connection.prepareStatement("update users set url=? where user_id=?");
-				PreparedStatement1.setString(1, ss);
-				PreparedStatement1.setString(2, usermodel.getUser_id());
-				PreparedStatement1.executeUpdate();
-			}*/
+
 			String ss = paramHttpServletRequest.getRequestURI();
 			String ss1 = paramHttpServletRequest.getQueryString();
 			if (ss1 != null)
