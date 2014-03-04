@@ -105,7 +105,7 @@ public class ShowProblemServlet extends HttpServlet
 			long l1;
 			String contest_id;
 			String s_spjFile;
-			boolean b_start = false;
+			boolean b_start = true;
 			boolean b_end = true;
 			boolean b_login = UserModel.isLoginned(request);
 			PreparedStatement preparedstatement2;
