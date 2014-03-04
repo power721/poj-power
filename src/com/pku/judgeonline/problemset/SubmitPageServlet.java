@@ -100,6 +100,7 @@ public class SubmitPageServlet extends HttpServlet
 				}
 				i = resultset.getInt("problem_id");
 			}
+			out.println((new StringBuilder()).append("<input type=\"hidden\" name=\"contest_id\" value=\"").append(l).append("\">").toString());
 			out.println((new StringBuilder()).append("Problem ID:<input type=\"text\" name=\"problem_id\" value=\"").append(i != pid ? "" + (char) (pid + 65) : i).append("\" size=\"20\" accesskey=p><br>").toString());
 			preparedstatement = connection.prepareStatement("select title,contest_id from problem where problem_id=?");
 			preparedstatement.setInt(1, i);

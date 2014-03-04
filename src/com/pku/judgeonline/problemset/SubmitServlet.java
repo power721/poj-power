@@ -67,7 +67,7 @@ public class SubmitServlet extends HttpServlet
 		paramHttpServletResponse.setContentType("text/html; charset=UTF-8");
 		paramHttpServletRequest.setCharacterEncoding("UTF-8");
 		PrintWriter localPrintWriter = paramHttpServletResponse.getWriter();
-		long l1, cid = 0L;
+		long pid = 0, l1, cid = 0L;
 		String str;
 		try
 		{
@@ -77,7 +77,7 @@ public class SubmitServlet extends HttpServlet
 			{
 				l1 = c - 'A';
 			} else
-				l1 = Integer.parseInt(s_p);
+				pid = l1 = Integer.parseInt(s_p);
 			str = paramHttpServletRequest.getParameter("contest_id");
 			if (str != null)
 				cid = Integer.parseInt(str);
@@ -148,18 +148,18 @@ public class SubmitServlet extends HttpServlet
 					localConnection.close();
 					return;
 				}
-				l1 = localResultSet.getInt("problem_id");
+				pid = localResultSet.getInt("problem_id");
 			}
 			String str3 = localUserModel.getUser_id();
 			String str4 = localUserModel.getNick();
 			localPreparedStatement = localConnection.prepareStatement("select problem.* from problem where problem_id = ? AND UPPER(problem.defunct) = 'N'");
-			localPreparedStatement.setLong(1, l1);
+			localPreparedStatement.setLong(1, pid);
 			localResultSet = localPreparedStatement.executeQuery();
 			if (!localResultSet.next())
 			{
 				localPreparedStatement.close();
 				localConnection.close();
-				ErrorProcess.Error("No such problem", localPrintWriter);
+				ErrorProcess.Error("No such problem.", localPrintWriter);
 				return;
 			}
 			String str5 = localResultSet.getString("contest_id");
@@ -192,7 +192,7 @@ public class SubmitServlet extends HttpServlet
 					{
 						localPreparedStatement.close();
 						localConnection.close();
-						ErrorProcess.Error("No such problem", localPrintWriter);
+						ErrorProcess.Error("You cannot access this problem!", localPrintWriter);
 						return;
 					}
 				}
@@ -200,7 +200,7 @@ public class SubmitServlet extends HttpServlet
 				if (k != 0)
 				{
 					localPreparedStatement = localConnection.prepareStatement("update problem set contest_id=null where problem_id=?");
-					localPreparedStatement.setLong(1, l1);
+					localPreparedStatement.setLong(1, pid);
 					localPreparedStatement.executeUpdate();
 					localPreparedStatement.close();
 					str5 = null;
@@ -209,7 +209,7 @@ public class SubmitServlet extends HttpServlet
 				{
 					localPreparedStatement = localConnection.prepareStatement("select num from contest_problem where contest_id=? and problem_id=?");
 					localPreparedStatement.setString(1, str5);
-					localPreparedStatement.setLong(2, l1);
+					localPreparedStatement.setLong(2, pid);
 					localResultSet = localPreparedStatement.executeQuery();
 					if (localResultSet.next())
 						n = localResultSet.getInt("num");
@@ -254,7 +254,7 @@ public class SubmitServlet extends HttpServlet
 			localRunRecord.solution_id = l5;
 			localRunRecord.contest_id = str5;
 			localRunRecord.ip = paramHttpServletRequest.getRemoteAddr();
-			localRunRecord.problem_id = l1;
+			localRunRecord.problem_id = pid;
 			localRunRecord.memory_limit = l2;
 			localRunRecord.time_limit = l3;
 			localRunRecord.case_time_limit = l4;
@@ -269,7 +269,7 @@ public class SubmitServlet extends HttpServlet
 			localPreparedStatement = localConnection.prepareStatement("INSERT INTO solution (solution_id,problem_id,user_id,in_date,code_length,className,result,language,ip,contest_id,valid,num) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 			int i2 = 1;
 			localPreparedStatement.setLong(i2++, l5);
-			localPreparedStatement.setLong(i2++, l1);
+			localPreparedStatement.setLong(i2++, pid);
 			localPreparedStatement.setString(i2++, str3);
 			localPreparedStatement.setTimestamp(i2++, localRunRecord.submit_time);
 			localPreparedStatement.setLong(i2++, str2.length());

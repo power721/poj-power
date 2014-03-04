@@ -31,6 +31,7 @@ public class ShowProblemServlet extends HttpServlet
 		int problem_id, pid;
 		int cid = 0;
 		int page = 1;
+		int j = -1;
 		String s_cid = request.getParameter("contest_id");
 		String s_pid = request.getParameter("problem_id");
 		boolean b_admin;
@@ -79,6 +80,7 @@ public class ShowProblemServlet extends HttpServlet
 					connection.close();
 					return;
 				}
+				j = pid;
 				problem_id = resultset.getInt("problem_id");
 				resultset.close();
 				preparedstatement.close();
@@ -100,11 +102,11 @@ public class ShowProblemServlet extends HttpServlet
 				return;
 			}
 
-			int j = -1;
 			long l;
 			long l1;
 			String contest_id;
 			String s_spjFile;
+			boolean in_contest = false;
 			boolean b_start = true;
 			boolean b_end = true;
 			boolean b_login = UserModel.isLoginned(request);
@@ -157,6 +159,7 @@ public class ShowProblemServlet extends HttpServlet
 						connection.close();
 						return;
 					}
+					in_contest = true;
 					Timestamp timestamp = resultset2.getTimestamp("start_time");
 					Timestamp timestamp1 = resultset2.getTimestamp("end_time");
 					b_start = timestamp.getTime() < System.currentTimeMillis();
@@ -168,11 +171,11 @@ public class ShowProblemServlet extends HttpServlet
 			resultset2.close();
 			preparedstatement2.close();
 
-			if (cid != 0)
+			if (in_contest)
 			{
 				if (!b_start)
 				{
-					ErrorProcess.Error((new StringBuilder()).append("Can not find problem (ID:").append(problem_id).append(")").toString(), out);
+					ErrorProcess.Error("You cannot access this problem.", out);
 					resultset.close();
 					preparedstatement.close();
 					connection.close();
