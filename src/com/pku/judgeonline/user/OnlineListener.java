@@ -153,7 +153,8 @@ public class OnlineListener implements ServletContextListener, ServletContextAtt
 					String session_id = resultset.getString("session_id");
 					//String ip_address = resultset.getString("ip_address");
 					HttpSession session = map.get(session_id);
-					session.invalidate();
+					if (session != null)
+						session.invalidate();
 					//String title = s + " login repeatedly";
 					//String content = "Old  IP: " + ip_address + "\nNew IP: " + ip + "\n";
 					//Tool.sendMail(connection, "System", s, title, "此消息也会发给管理员，请不要在比赛过程中重复登录。\n如果非本人登录，请修改密码以保证安全。\n"+content, 0);

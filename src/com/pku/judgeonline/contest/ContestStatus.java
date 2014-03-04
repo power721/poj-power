@@ -352,9 +352,29 @@ public class ContestStatus extends HttpServlet
 			int i2 = -1;
 			if (!s4.trim().equals(""))
 				i2 = Integer.parseInt(s4);
+			
 			out.println("<center><img src='./images/status.gif' alt='Status'></center><br>");
 			out.print("<p align=center><font size=5 color=blue>Contest Status List</font></p>");
-			out.print("<div id=status><form method=get action=conteststatus>" + (l != 0l ? ("<input type=hidden name=contest_id value=" + l + ">") : "") + "Problem ID:<input type=text name=problem_id size=8 value=\"" + (s != "" && p_id != pid ? "" + (char) (pid + 65) : s) + "\">User ID:<input type=text name=user_id size=15 value=\"" + s3 + "\">Result:<select size=1 name=result><option value='' " + (l1 != -1 ? "" : " selected") + ">All</option><option value=0" + (l1 != 0 ? "" : " selected") + ">Accepted</option><option value=1" + (l1 != 1 ? "" : " selected") + ">Presentation Error</option><option value=2" + (l1 != 2 ? "" : " selected") + ">Time Limit Exceeded</option><option value=3" + (l1 != 3 ? "" : " selected") + ">Memory Limit Exceeded</option><option value=4"
+			out.print("<div id=status><form method=get action=conteststatus>" + (l != 0l ? ("<input type=hidden name=contest_id value=" + l + ">") : "") + "Problem ID:");
+			if (l != 0L)
+			{
+				preparedstatement = connection1.prepareStatement("select * from contest_problem where contest_id=? order by num");
+				preparedstatement.setLong(1, l);
+				resultset = preparedstatement.executeQuery();
+				out.print("<select name=problem_id size=1>");
+				for(;resultset.next();)
+				{
+					out.print("<option value=\"" +  resultset.getInt("num") + "\"" + (resultset.getInt("num")==pid?" selected":"") + ">" + (char)(resultset.getInt("num")+65) + ". " + resultset.getString("title") + "</option>");
+				}
+				out.print("</select>");
+				resultset.close();
+				preparedstatement.close();
+			}
+			else
+			{
+				out.print("<input type=text name=problem_id size=8 value=\"" + (s != "" && p_id != pid ? "" + (char) (pid + 65) : s) + "\">");
+			}
+			out.print("User ID:<input type=text name=user_id size=15 value=\"" + s3 + "\">Result:<select size=1 name=result><option value='' " + (l1 != -1 ? "" : " selected") + ">All</option><option value=0" + (l1 != 0 ? "" : " selected") + ">Accepted</option><option value=1" + (l1 != 1 ? "" : " selected") + ">Presentation Error</option><option value=2" + (l1 != 2 ? "" : " selected") + ">Time Limit Exceeded</option><option value=3" + (l1 != 3 ? "" : " selected") + ">Memory Limit Exceeded</option><option value=4"
 					+ (l1 != 4 ? "" : " selected") + ">Wrong Answer</option><option value=5" + (l1 != 5 ? "" : " selected") + ">Runtime Error</option><option value=6" + (l1 != 6 ? "" : " selected") + ">Output Limit Exceeded</option><option value=7" + (l1 != 7 ? "" : " selected") + ">Compile Error</option></select>Language:<select size=1 name=language><option value='' " + (i2 != -1 ? "" : " selected") + ">All</option><option value=0" + (i2 != 0 ? "" : " selected") + ">G++</option><option value=1" + (i2 != 1 ? "" : " selected") + ">GCC</option><option value=2" + (i2 != 2 ? "" : " selected") + ">Pascal</option><option value=3" + (i2 != 3 ? "" : " selected") + ">Java</option><option value=4" + (i2 != 4 ? "" : " selected")
 					+ ">Masm32</option><option value=5" + (i2 != 5 ? "" : " selected") + ">Python</option></select><input type=submit width=8 value=Go></form>");
 			preparedstatement = connection1.prepareStatement(sqlall);
