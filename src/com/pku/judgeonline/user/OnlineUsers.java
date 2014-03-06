@@ -39,19 +39,6 @@ public class OnlineUsers extends HttpServlet
 		int idx = 0;
 		String s = "";
 		FormattedOut.printHead(out, request, connection, "Online Users");
-		if (ServerConfig.startTimestamp % 100 < 30)
-		{
-			try
-			{
-				preparedstatement = connection.prepareStatement("delete from sessions where session_expires <= UNIX_TIMESTAMP()");
-				preparedstatement.executeUpdate();
-				preparedstatement.close();
-			} catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
-		}
-		
 		try
 		{
 			preparedstatement = connection.prepareStatement("SELECT COUNT(*) AS count, COUNT(user_id) AS logined FROM sessions");

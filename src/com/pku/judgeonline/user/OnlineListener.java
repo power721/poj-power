@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -107,12 +108,21 @@ public class OnlineListener implements ServletContextListener, ServletContextAtt
 			preparedstatement.setString(1, id);
 			preparedstatement.executeUpdate();
 			preparedstatement.close();
-			connection.close();
 		} catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
 		
+		try
+		{
+			PreparedStatement preparedstatement = connection.prepareStatement("delete from sessions where session_expires <= UNIX_TIMESTAMP()");
+			preparedstatement.executeUpdate();
+			preparedstatement.close();
+			connection.close();
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
 		/*counter = Integer.parseInt((String) application.getAttribute("userCounter"));
 		counter--;
 		if (counter < 0)
