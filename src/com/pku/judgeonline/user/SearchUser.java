@@ -37,8 +37,7 @@ public class SearchUser extends HttpServlet
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		out = response.getWriter();
-		//s = request.getParameter("user_id");
-		s = new String(request.getParameter("user_id").getBytes("ISO8859_1"),"UTF-8");
+		s = request.getParameter("user_id");
 		s3 = s;
 		s1 = request.getParameter("orderby");
 		s2 = request.getParameter("position");
