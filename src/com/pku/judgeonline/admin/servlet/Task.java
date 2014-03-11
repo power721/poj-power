@@ -123,7 +123,7 @@ public class Task extends HttpServlet
 			e.printStackTrace();
 		}
 		
-		cmd = "VBoxManage list runningvms";
+		/*cmd = "VBoxManage list runningvms";
 		//cmd = "D:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe list vms";
 		//cmd = "C:\\MinGWStudio\\Samples\\MessageBox\\VirtualBoxTest\\Release\\VirtualBoxTest.exe";
 		System.out.println(cmd);
@@ -150,7 +150,7 @@ public class Task extends HttpServlet
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		/*
 		 * out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">"
 		 * ); out.println("<HTML>");

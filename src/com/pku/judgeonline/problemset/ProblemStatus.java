@@ -147,7 +147,9 @@ public class ProblemStatus extends HttpServlet
 				preparedstatement.setLong(1, l);
 			} else
 			{
-				preparedstatement = connection.prepareStatement("select count(if(result=0,1,null)) as solved,count(*) as submit_user from solution where contest_id=" + id + " and problem_id=" + l);
+				preparedstatement = connection.prepareStatement("select count(if(result=0,1,null)) as solved,count(*) as submit_user from solution where contest_id=? and problem_id=?");
+				preparedstatement.setLong(1, id);
+				preparedstatement.setLong(2, l);
 			}
 			resultset = preparedstatement.executeQuery();
 			if (resultset.next())
@@ -155,6 +157,7 @@ public class ProblemStatus extends HttpServlet
 				l5 = resultset.getLong("submit_user");
 				l6 = resultset.getLong("solved");
 			}
+			resultset.close();
 			preparedstatement.close();
 			//System.out.println("before head :"+(System.currentTimeMillis()-start));
 			if (id == 0L)

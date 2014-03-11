@@ -135,6 +135,7 @@ public class Login extends HttpServlet
 					out.print("<script language=javascript>");
 					out.print("alert(\"Login failed!(Check User_id and Password please.)\")");
 					out.print("</script>");
+					connection.close();
 				} else
 				{
 					/*servletContext = getServletContext();

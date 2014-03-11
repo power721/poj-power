@@ -3,6 +3,7 @@ package com.pku.judgeonline.error;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -84,6 +85,15 @@ public class ErrorPage extends HttpServlet
 		FormattedOut.printBottom(request, out);
 		out.flush();
 		out.close();
+		try
+		{
+			connection.close();
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ErrorProcess.ExceptionHandle(e, out);
+		}
 	}
 
 	/**

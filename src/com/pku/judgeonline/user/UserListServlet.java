@@ -114,6 +114,8 @@ public class UserListServlet extends HttpServlet
 				preparedstatement.setLong(1, l);
 				preparedstatement.setLong(2, l1);
 				resultset = preparedstatement.executeQuery();
+				resultset.close();
+				preparedstatement.close();
 				
 				preparedstatement = connection.prepareStatement((new StringBuilder()).append("SELECT * FROM users WHERE UPPER(defunct) = 'N' ORDER BY ").append(s).append(" ").append(s1).append(",").append(s2).append(" ").append(s3).append(" limit ?,?").toString());
 				preparedstatement.setLong(1, l);
@@ -147,13 +149,16 @@ public class UserListServlet extends HttpServlet
 							out.println((new StringBuilder()).append("<td class=\"user\"><a href=userstatus?user_id=").append(s6).append("><b>").append(s6).append("</b></a></td>").toString());
 					} else
 						out.println((new StringBuilder()).append("<td class=\"user\"><a href=userstatus?user_id=").append(s6).append(">").append(s6).append("</a></td>").toString());
-
+					
 					out.println((new StringBuilder()).append("<td class=\"nick\"><font color=green>").append(Tool.titleEncode(connection, s6, s7)).append("</font></td>").toString());
 					out.println((new StringBuilder()).append("<td><a href=status?result=0&user_id=").append(s6).append(">").append(k).append("</a></td>").toString());
 					out.println((new StringBuilder()).append("<td><a href=status?user_id=").append(s6).append(">").append(i1).append("</a></td>").toString());
 					out.println((new StringBuilder()).append("<td>").append(j1).append("%</td>").toString());
+					resultset2.close();
+					preparedstatement2.close();
 				}
-
+				resultset.close();
+				preparedstatement.close();
 				out.println("</table>");
 				out.println("<p align=\"center\">");
 				long l4 = (l2 - 1L) / l1 + 1L;
@@ -165,7 +170,6 @@ public class UserListServlet extends HttpServlet
 			{
 				exception1.printStackTrace(System.err);
 			}
-			preparedstatement.close();
 			connection.close();
 		} catch (Exception exception)
 		{
