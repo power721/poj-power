@@ -41,9 +41,6 @@ public class FormattedOut
 			out.println("   <link rel=\"Shortcut Icon\" href=\"images/favicon.ico\" />");
 			out.println("   <link href=\"css/oj.css\" type=\"text/css\" rel=\"Stylesheet\" rev=\"Stylesheet\" media=\"all\"/>");
 			out.println("   <link href=\"css/MyStyle.css\" type=\"text/css\" rel=\"Stylesheet\" rev=\"Stylesheet\" media=\"all\"/>");
-			out.println("   <script type=\"text/javascript\">var beginTime = new Date().getTime();</script>");
-			out.println("   <script type=\"text/javascript\" src=\"js/jquery-1.10.2.min.js\"></script>");
-			out.println("   <script type=\"text/javascript\" src=\"js/oj.js\"></script>");
 			out.println(" </head>\n");
 			out.println("<body>");
 			out.println("  <a name=\"top\"></a>");
@@ -292,6 +289,8 @@ public class FormattedOut
 	public static void printBottom(HttpServletRequest request, PrintWriter out)
 	{
 		out.println("   </div><!-- div main -->\n");
+		out.println("   <script type=\"text/javascript\" src=\"js/jquery-1.10.2.min.js\"></script>");
+		out.println("   <script type=\"text/javascript\" src=\"js/oj.js\"></script>");
 		out.println("   <div class=\"footer\">");
 		out.println("     <img height=29 src=\"images/home.jpg\" width=40 border=0><a href=.>Home Page</a>&nbsp;&nbsp;");
 		out.println("     <img height=29 src=\"images/goback.jpg\" width=40 border=0><a href=\"javascript:history.go(-1)\">Go Back</a>&nbsp;&nbsp;");

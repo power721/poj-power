@@ -120,7 +120,6 @@ public class ContestManager extends HttpServlet
 						return;
 					}
 					String str2 = paramHttpServletRequest.getParameter("ptitle");
-					str2 = new String(str2.getBytes("iso-8859-1"), "utf-8");
 					localPreparedStatement1.close();
 					localPreparedStatement1 = localConnection.prepareStatement("update problem set contest_id=? where problem_id=?");
 					localPreparedStatement1.setLong(1, l1);

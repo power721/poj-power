@@ -145,7 +145,11 @@ public class ContestStatus extends HttpServlet
 				j = Integer.parseInt(s7);
 			String s8 = request.getParameter("p");
 			if (s8 != null)
+			{
 				p = Integer.parseInt(s8);
+				if (p < 1)
+					p = 1;
+			}
 		} catch (NumberFormatException numberformatexception)
 		{
 		} catch (Exception exception)

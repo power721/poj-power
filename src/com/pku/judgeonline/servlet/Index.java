@@ -54,7 +54,10 @@ public class Index extends HttpServlet
 		out.println("<center><a href=\"http://power-oj.com/contest/recent\" target=\"_blank\"><font size=5 color=\"red\"><u><b>Recent Contests</b></u></font></a></center>");
 
 		out.println(s);
-		out.println("<script  type=\"text/javascript\">myprint();</script>");
+		out.println("<script  type=\"text/javascript\">myprint();</script><br>");
+		out.println("&nbsp;&nbsp;<a href=\"http://www.oj.swust.edu.cn/gongju/link.html\" target=\"_blank\"><b><u><span class=\"red\">OJ大全</span></u></b></a><br>");
+		out.println("&nbsp;&nbsp;<a href=\"http://www.oj.swust.edu.cn/gongju\" target=\"_blank\"><b><u><span class=\"red\">资料下载</span></u></b></a><br>");
+		out.println("&nbsp;&nbsp;<a href=\"ACShare\"><b><u><span class=\"red\">AC共享计划</sspan></u></b></a><br>");
 		out.println("<p>&nbsp;&nbsp;Problem Set is the place where you can find large amount of problems from different programming contests.");
 		out.println("Online Judge System allows you to test your solution for every problem.</p>");
 		out.println("<p>&nbsp;&nbsp;First of all, read carefully <a href=\"faq.htm\" target=\"_blank\">Frequently Asked Questions</a>.<br>");
