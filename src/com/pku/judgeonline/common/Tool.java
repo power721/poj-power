@@ -646,7 +646,7 @@ public class Tool
 			preparedstatement.setLong(5, reply);
 			preparedstatement.executeUpdate();
 		}
-		if(failed_users != "")
+		if(!"".equals(failed_users))
 		{
 			preparedstatement = connection.prepareStatement("INSERT INTO mail (from_user,to_user,title,content,in_date) VALUES (?,?,?,?,NOW())");
 			preparedstatement.setString(1, "System");

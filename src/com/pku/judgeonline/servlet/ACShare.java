@@ -78,7 +78,7 @@ public class ACShare extends HttpServlet
 			{
 				String s1 = request.getParameter("user");
 				String s = UserModel.getCurrentUser(request).getUser_id();
-				if (s1 != null && s1 != "")
+				if (s1 != null && !"".equals(s1))
 				{
 					if (UserModel.isUser(request, s1))
 					{

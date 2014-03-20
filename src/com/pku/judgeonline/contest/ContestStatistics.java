@@ -47,7 +47,7 @@ public class ContestStatistics extends HttpServlet
 			return;
 		}
 		String str = request.getParameter("contest_id");
-		connection = null;
+		connection = DBConfig.getConn();
 		preparedstatement = null;
 		resultset = null;
 		l1 = System.currentTimeMillis();
@@ -56,7 +56,6 @@ public class ContestStatistics extends HttpServlet
 		boolean flag2;
 		try
 		{
-			connection = DBConfig.getConn();
 			preparedstatement = connection.prepareStatement("select title,end_time,private from contest where contest_id=? and start_time<? and UPPER(defunct)='N'");
 			preparedstatement.setLong(1, l);
 			preparedstatement.setTimestamp(2, new Timestamp(l1));

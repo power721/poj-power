@@ -39,17 +39,17 @@ public class Send extends HttpServlet
 		}
 		String s = request.getParameter("title");
 		if (s != null)
-			s.trim();
+			s = s.trim();
 		String s1 = request.getParameter("to");
 		if (s1 != null)
-			s1.trim();
+			s1 = s1.trim();
 		String s2 = UserModel.getCurrentUser(request).getUser_id();
 		boolean flags = UserModel.isAdminLoginned(request);
 		String s3 = (request.getParameter("content"));
 		if (!flags)
 			s3 = Tool.titleEncode(s3);
 		if (s3 != null)
-			s3.trim();
+			s3 = s3.trim();
 		else
 			s3 = "";
 		if (s == null || s.equals(""))

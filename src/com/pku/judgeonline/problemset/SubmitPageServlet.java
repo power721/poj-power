@@ -62,7 +62,7 @@ public class SubmitPageServlet extends HttpServlet
 			FormattedOut.printHead(out, request, connection, "Submit Your Solution Via Web");
 		else
 			FormattedOut.printContestHead(out, l, "Submit Your Solution Via Web", request);
-		if (submit == "" || submit == null)
+		if (submit == null || "".equals(submit))
 			submit = "./submit";
 		out.println("<script language=\"javascript\" type=\"text/javascript\" src=\"js/editarea/edit_area/edit_area_full.js\"></script>");
 		out.println("<script language=\"javascript\" type=\"text/javascript\">");

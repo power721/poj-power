@@ -145,7 +145,7 @@ public class OnlineListener implements ServletContextListener, ServletContextAtt
 		{
 			s = null;
 		}
-		if (s != null && s != "")
+		if (s != null && !"".equals(s))
 		{
 			Connection connection = DBConfig.getConn();
 			//String ip = getRemortIP(request);

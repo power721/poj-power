@@ -34,34 +34,6 @@ public class SubmitServlet extends HttpServlet
 	{
 	}
 
-	public static synchronized long getNextSolutionId()
-	{
-		try
-		{
-			long l = 0L;
-
-			Connection localConnection = DBConfig.getConn();
-			PreparedStatement localPreparedStatement = localConnection.prepareStatement("select max(solution_id) as maxp from solution");
-			ResultSet localResultSet = localPreparedStatement.executeQuery();
-			if (localResultSet.next())
-			{
-				l = localResultSet.getInt("maxp") + 1;
-				if (l < 1000L)
-					l = 1000L;
-			} else
-			{
-				l = 1000L;
-			}
-			localPreparedStatement.close();
-			localConnection.close();
-
-			return l++;
-		} catch (Exception localException)
-		{
-		}
-		return -1L;
-	}
-
 	public void doPost(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse) throws ServletException, IOException
 	{
 		paramHttpServletResponse.setContentType("text/html; charset=UTF-8");

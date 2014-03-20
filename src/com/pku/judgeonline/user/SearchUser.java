@@ -122,7 +122,7 @@ public class SearchUser extends HttpServlet
 				while (resultset.next())
 				{
 					String s6;
-					if (j % 2 == 1)
+					if (j % 2 != 0)
 						s6 = "#C0C0C0";
 					else
 						s6 = "#78C8FF";

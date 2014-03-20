@@ -67,7 +67,7 @@ public class UploadServlet extends HttpServlet
 		while (flag == true)
 		{
 			String s = reqbuf.readLine();
-			if ((s == lastboundary) || (s == null))
+			if (lastboundary.equals(s) || s == null)
 				break;
 			switch (state)
 			{

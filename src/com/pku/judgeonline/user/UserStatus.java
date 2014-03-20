@@ -216,7 +216,7 @@ public class UserStatus extends HttpServlet
 					String s7;
 					if (j1 == k)
 						s7 = "#ffffff";
-					else if (k1 % 2 == 1)
+					else if (k1 % 2 != 0)
 						s7 = "#C0C0C0";
 					else
 						s7 = "#78C8FF";

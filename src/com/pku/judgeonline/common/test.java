@@ -106,13 +106,13 @@ public class test
 		PreparedStatement.setLong(1, paramLong1);
 		PreparedStatement.setString(2, paramString);
 		PreparedStatement.setLong(3, paramLong2);
-		PreparedStatement.executeQuery();
+		PreparedStatement.executeUpdate();
 		PreparedStatement.close();
 		PreparedStatement = paramConnection.prepareStatement("update solution set valid=1 where problem_id=? and user_id=? and solution_id<=?");
 		PreparedStatement.setLong(1, paramLong1);
 		PreparedStatement.setString(2, paramString);
 		PreparedStatement.setLong(3, paramLong2);
-		PreparedStatement.executeQuery();
+		PreparedStatement.executeUpdate();
 		PreparedStatement.close();
 	}
 

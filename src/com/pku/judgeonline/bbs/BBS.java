@@ -187,13 +187,13 @@ public class BBS extends HttpServlet
 				if (l11 > l1)
 					l1 = l11;
 				long l12 = resultset.getLong("problem_id");
-				if (s == "")
+				if ("".equals(s))
 				{
 					for (long l13 = l5; l13 < l6; l13++)
 						out.print("<ul>");
 
 				}
-				if (s == "")
+				if ("".equals(s))
 				{
 					for (long l14 = l6; l14 < l5; l14++)
 						out.print("</ul>");

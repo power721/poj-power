@@ -27,7 +27,6 @@ public class ModifyUserPage extends HttpServlet
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		PrintWriter out;
-		Connection connection;
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		out = response.getWriter();
@@ -36,11 +35,9 @@ public class ModifyUserPage extends HttpServlet
 			Tool.forwardToUrl(request, response, "loginpage?url=modifyuserpage");
 			return;
 		}
-		connection = null;
-		String s;
+		String s = UserModel.getCurrentUser(request).getUser_id();
 		ResultSet resultset;
-		s = UserModel.getCurrentUser(request).getUser_id();
-		connection = DBConfig.getConn();
+		Connection connection = DBConfig.getConn();
 		try
 		{
 			PreparedStatement preparedstatement = connection.prepareStatement("select * from users where user_id=?");
@@ -55,8 +52,6 @@ public class ModifyUserPage extends HttpServlet
 				return;
 			}
 
-			try
-			{
 				String s1 = resultset.getString("nick");
 				String s2 = resultset.getString("email");
 				String s3 = resultset.getString("school");
@@ -89,20 +84,6 @@ public class ModifyUserPage extends HttpServlet
 				FormattedOut.printBottom(request, out);
 				connection.close();
 				connection = null;
-			} catch (Exception exception2)
-			{
-				exception2.printStackTrace(System.err);
-				try
-				{
-					if (connection != null)
-					{
-						connection.close();
-						connection = null;
-					}
-				} catch (Exception exception3)
-				{
-				}
-			}
 		} catch (Exception exception)
 		{
 			exception.printStackTrace(System.err);

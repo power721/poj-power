@@ -56,7 +56,7 @@ public class xmlReader extends HttpServlet
 			FormattedOut.printHead(out, "xmlReader");
 			//PrintWriter out = response.getWriter();
 
-			if (str == null || str == "")
+			if (str == null || "".equals(str))
 			{
 				File xml = new File(xmlPath);
 				String[] files = xml.list();
@@ -77,7 +77,7 @@ public class xmlReader extends HttpServlet
 							Problem p = itemToProblem(itemList.item(i), id++);
 
 							out.println(++n + " <b>" + p.title + "</b>  &nbsp&nbsp&nbsp&nbsp\tdata files:" + p.data_in.size());
-							if (p.spj != "")
+							if (!"".equals(p.spj))
 								out.println("<font color=red> SPJ</font>");
 							out.println("<br>");
 						}

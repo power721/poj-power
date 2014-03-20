@@ -76,12 +76,7 @@ public class EditContestPage extends HttpServlet
 					connection = null;
 					return;
 				}
-			} catch (SQLException sqlexception)
-			{
-				ErrorProcess.ExceptionHandle(sqlexception, out);
-			}
-			try
-			{
+				
 				Calendar calendar = Calendar.getInstance();
 				String s1 = resultset.getString("ctitle");
 				int Private = resultset.getInt("private");
@@ -136,11 +131,9 @@ public class EditContestPage extends HttpServlet
 				out.println("</div></form>");
 				FormattedOut.printBottom(out);
 				out.close();
-				return;
-			} catch (Exception exception1)
+			} catch (SQLException sqlexception)
 			{
-				ErrorProcess.ExceptionHandle(exception1, out);
-				return;
+				ErrorProcess.ExceptionHandle(sqlexception, out);
 			}
 		}
 	}

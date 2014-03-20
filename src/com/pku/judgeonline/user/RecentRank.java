@@ -46,10 +46,9 @@ public class RecentRank extends HttpServlet
 			l = 10000L;
 		long l1 = ServerConfig.getCurrSolutionId() - l - 1L;
 		String date = request.getParameter("date");
-		Connection connection = null;
+		Connection connection = DBConfig.getConn();
 		try
 		{
-			connection = DBConfig.getConn();
 			PreparedStatement preparedstatement;
 			FormattedOut.printHead(out, request, connection, "Recent Rank");
 			out.print("<div align=center><form action=recentrank method=get>");

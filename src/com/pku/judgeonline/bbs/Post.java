@@ -63,7 +63,7 @@ public class Post extends HttpServlet
 		String str2 = paramHttpServletRequest.getParameter("content");
 		if (str2 == null)
 			str2 = "";
-		str2.trim();
+		str2 = str2.trim();
 		try
 		{
 			pid = l1 = Integer.parseInt(paramHttpServletRequest.getParameter("problem_id"));

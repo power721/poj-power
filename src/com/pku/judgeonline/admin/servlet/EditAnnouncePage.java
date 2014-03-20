@@ -68,12 +68,7 @@ public class EditAnnouncePage extends HttpServlet
 				connection = null;
 				return;
 			}
-		} catch (SQLException sqlexception)
-		{
-			ErrorProcess.ExceptionHandle(sqlexception, out);
-		}
-		try
-		{
+			
 			Calendar calendar = Calendar.getInstance();
 			String s1 = resultset.getString("ctitle");
 			long l1 = resultset.getTimestamp("start_time").getTime();
@@ -119,10 +114,9 @@ public class EditAnnouncePage extends HttpServlet
 			out.println("</div></form>");
 			FormattedOut.printBottom(out);
 			out.close();
-			return;
-		} catch (Exception exception1)
+		} catch (SQLException sqlexception)
 		{
-			ErrorProcess.ExceptionHandle(exception1, out);
+			ErrorProcess.ExceptionHandle(sqlexception, out);
 		}
 	}
 

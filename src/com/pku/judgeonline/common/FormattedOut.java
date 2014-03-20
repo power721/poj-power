@@ -33,9 +33,9 @@ public class FormattedOut
 			out.println(" <head>");
 			out.println("   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
 			out.println("   <meta http-equiv=\"Pragma\" content=\"no-cache\">");
-			if (s.equals("Problem Status List"))
+			if ("Problem Status List".equals(s))
 				out.println("<META HTTP-EQUIV=\"Refresh\" content=\"60\">");
-			else if (s.equals("Contest Standing"))
+			else if ("Contest Standing".equals(s))
 				out.println("<META HTTP-EQUIV=\"Refresh\" content=\"200\">");
 			out.println(new StringBuilder().append("   <title>").append(s).append("</title>").toString());
 			out.println("   <link rel=\"Shortcut Icon\" href=\"images/favicon.ico\" />");

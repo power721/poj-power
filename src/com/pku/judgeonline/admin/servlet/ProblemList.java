@@ -53,10 +53,9 @@ public class ProblemList extends HttpServlet
 			j = 100;
 		}
 		FormattedOut.printHead(out, "Problem List");
-		Connection connection = null;
+		Connection connection = DBConfig.getConn();
 		try
 		{
-			connection = DBConfig.getConn();
 			PreparedStatement preparedstatement = connection.prepareStatement("SELECT COUNT(*) AS total FROM problem");
 			ResultSet resultset = preparedstatement.executeQuery();
 			resultset.first();

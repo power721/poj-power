@@ -42,7 +42,7 @@ public class SendPage extends HttpServlet
 		str1 = paramHttpServletRequest.getParameter("to");
 		if (str1 == null)
 			str1 = "";
-		str1.trim();
+		str1 = str1.trim();
 		long l = 0L;
 		try
 		{

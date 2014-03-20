@@ -33,7 +33,7 @@ public class NewUser extends HttpServlet
 		PrintWriter out = response.getWriter();
 		if (!Guard.Guarder(request, response, out))
 			return;
-		Connection connection = null;
+		Connection connection = DBConfig.getConn();
 		long l = 20L;
 		try
 		{
@@ -52,7 +52,6 @@ public class NewUser extends HttpServlet
 				s1 = "reg_time";
 			try
 			{
-				connection = DBConfig.getConn();
 				FormattedOut.printHead(out, request, connection, "New User");
 				out.print("<div align=center><form action=newuser method=get>");
 				out.print((new StringBuilder()).append("<font color=blue size=5>New user of last <input type=text name=count size=5 value=").append(l).append("> registered.</font>").toString());

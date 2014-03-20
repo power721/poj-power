@@ -156,7 +156,7 @@ public class xmlProblem extends HttpServlet
 							if (!file.isDirectory())
 								file.mkdirs();
 
-							if (p.spj != null && p.spj != "")
+							if (p.spj != null &&  !"".equals(p.spj))
 							{
 								String msg = "SPJ代码存放在" + file.getAbsolutePath() + "\\" + "Validate.exe用记事本打开，自己修改";
 								out.println("<font color=red><b>spj " + l + ":</font>" + msg + "</b><br>");
@@ -221,7 +221,7 @@ public class xmlProblem extends HttpServlet
 							}
 
 							out.println(l + " <b>" + p.title + "</b>  &nbsp&nbsp&nbsp&nbsp\tdata files:" + p.data_in.size());
-							if (p.solution != "")
+							if (!"".equals(p.solution))
 							{
 								String type = ".c";
 								if (p.type.equalsIgnoreCase("cpp") || p.type.equalsIgnoreCase("c++"))

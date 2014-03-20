@@ -36,14 +36,14 @@ public class AddTagServlet extends HttpServlet
 			return;
 		}
 		String s = request.getParameter("problem_id");
-		if (s == null || s == "")
+		if (s == null || "".equals(s))
 		{
 			ErrorProcess.Error("The problem_id cann't be empty.", out);
 			return;
 			// s = "";
 		}
 		String s1 = request.getParameter("tag");
-		if (s1 == null || s1 == "")
+		if (s1 == null || "".equals(s1))
 		{
 			ErrorProcess.Error("The tag cann't be empty.", out);
 			return;

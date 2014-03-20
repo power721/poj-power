@@ -50,10 +50,9 @@ public class ServerConfig
 
 	private static synchronized void _$1629()
 	{
-		Connection localConnection = null;
+		Connection localConnection = DBConfig.getConn();
 		try
 		{
-			localConnection = DBConfig.getConn();
 			PreparedStatement localPreparedStatement = localConnection.prepareStatement("select max(solution_id) as maxp from solution");
 			ResultSet localResultSet = localPreparedStatement.executeQuery();
 			if (localResultSet.next())
