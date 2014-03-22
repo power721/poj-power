@@ -61,12 +61,12 @@ public class ModifyUserPage extends HttpServlet
 				out.println("<TABLE align=center cellSpacing=3 cellPadding=3 width=600 border=0 background=images/table_back.jpg>");
 				out.println("<tr><td colspan=2 width=600 height=40>");
 				out.println("<p align=center>Modify Register Information</td>");
-				out.println("</tr><tr><td width=25%>User ID:</td>");
-				out.println((new StringBuilder()).append("<td width=75%><input type=text name=user_id size=20 value=\"").append(s).append("\"></td></tr>").toString());
+				out.println("</tr>");
+				out.println((new StringBuilder()).append("<input type=\"hidden\" name=user_id size=20 value=\"").append(s).append("\">").toString());
 				out.println("<tr><td>Nick Name:</td>");
 				out.println((new StringBuilder()).append("<td><input type=text name=nick size=50 value=\"").append(Tool.titleEncode(s1)).append("\"></td></tr>").toString());
 				out.println("<tr><td>Old Password:</td>");
-				out.println("<td><input type=password name=oldPassword size=20></td></tr>");
+				out.println("<td><input type=password name=oldPassword size=20 required></td></tr>");
 				out.println("<tr><td>New Password:</td>");
 				out.println("<td><input type=password name=newPassword size=20></td>");
 				out.println("</tr><tr><td>Repeat Password:</td>");
