@@ -120,6 +120,12 @@ function sbadd(userID) {
 		window.location = "admin.sourcebrowser?op=add&user=" + userID;
 	}
 }
+// <a href='javascript:roledel("20094012","Administrator")'>Del</a>
+function roledel(userID, role) {
+	if (confirm("Are you sure to delete " + userID + " from " + role + "?")) {
+		window.location = "admin.roles?op=del&user=" + userID;
+	}
+}
 function pcdel(userID, id) {
 	if (confirm("Are you sure to delete " + userID + " from this contest?")) {
 		window.location = "admin.contestuser?op=del&user=" + userID
