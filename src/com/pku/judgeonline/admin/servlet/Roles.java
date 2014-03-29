@@ -121,9 +121,9 @@ public class Roles extends HttpServlet
 				} else if (str1.trim().equals("del"))
 				{
 					String str3 = request.getParameter("role");
-					if ("root".equals(str3))
+					if ("root".equalsIgnoreCase(str3))
 					{
-						str3 = "";
+						str2 = "Cannot deleted!";
 					}
 					preparedstatement = Connection.prepareStatement("select * from privilege where user_id=? and rightstr=?");
 					preparedstatement.setString(1, str2);
