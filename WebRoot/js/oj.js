@@ -123,7 +123,7 @@ function sbadd(userID) {
 // <a href='javascript:roledel("20094012","Administrator")'>Del</a>
 function roledel(userID, role) {
 	if (confirm("Are you sure to delete " + userID + " from " + role + "?")) {
-		window.location = "admin.roles?op=del&user=" + userID;
+		window.location = "admin.roles?op=del&user=" + userID + "&role=" + role;
 	}
 }
 function pcdel(userID, id) {

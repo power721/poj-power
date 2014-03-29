@@ -121,6 +121,10 @@ public class Roles extends HttpServlet
 				} else if (str1.trim().equals("del"))
 				{
 					String str3 = request.getParameter("role");
+					if ("root".equals(str3))
+					{
+						str3 = "";
+					}
 					preparedstatement = Connection.prepareStatement("select * from privilege where user_id=? and rightstr=?");
 					preparedstatement.setString(1, str2);
 					preparedstatement.setString(2, str3);
