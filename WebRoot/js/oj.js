@@ -92,8 +92,8 @@ function showtrick() {
 }
 function myprint() {
 
-	document
-			.writeln("</br>&nbsp;&nbsp;<a href=../gongju/link.html><b><u><font color=red>OJ大全</font></u></b></a></br>&nbsp;&nbsp;<a href=../gongju><b><u><font color=red>资料下载</font></u></b></a></br>&nbsp;&nbsp;<a href=ACShare><b><u><font color=red>AC共享计划</font></u></b></a></br>&nbsp;&nbsp;<b>PowerOJ测试，如果遇到问题请联系<a href='mailto:power721@163.com'>管理员</a>。</b></br>");
+	//document
+	//		.writeln("</br>&nbsp;&nbsp;<a href=../gongju/link.html><b><u><font color=red>OJ大全</font></u></b></a></br>&nbsp;&nbsp;<a href=../gongju><b><u><font color=red>资料下载</font></u></b></a></br>&nbsp;&nbsp;<a href=ACShare><b><u><font color=red>AC共享计划</font></u></b></a></br>&nbsp;&nbsp;<b>PowerOJ测试，如果遇到问题请联系<a href='mailto:power721@163.com'>管理员</a>。</b></br>");
 }
 function announcement() {
 	document.writeln("----信息工程学院ACM集训队</br>");
