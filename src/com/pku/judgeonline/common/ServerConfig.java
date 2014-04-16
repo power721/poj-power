@@ -17,7 +17,7 @@ public class ServerConfig
 	public static long startTimestamp;
 	private static Properties _$1612;
 	@SuppressWarnings("unused") private static Properties _$1613;
-	private static String _$1614 = "C:\\judgeonline\\server.config";
+	private static String _$1614 = "C:\\JudgeOnline\\server.config";
 	private static String _$1615 = "/etc/OJserverconfig.property";
 	public static String ENCODE_STRING = "PWDforJO2005";
 	public static String VALIDATE_FILE_NAME = "validate.exe";
@@ -85,10 +85,10 @@ public class ServerConfig
 			String os = System.getProperty("os.name").toLowerCase();
 			//System.out.println(os);
 			_$1612 = new Properties();
-			if (os.startsWith("windows"))
-				_$1612.load(new FileInputStream(_$1614));
-			else if (os.startsWith("linux"))
+			if (os.startsWith("linux"))
 				_$1612.load(new FileInputStream(_$1615));
+			else
+				_$1612.load(new FileInputStream(_$1614));
 			_$1613 = new Properties();
 			String str1 = _$1612.getProperty("Debug");
 			_$998 = (str1 != null) && (str1.toUpperCase().equals("TRUE"));
