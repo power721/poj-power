@@ -37,8 +37,8 @@ public class ServerConfig
 	private static long _$1626 = 0L;
 	private static long _$1627 = 0L;
 	private static long _$1699 = 0L;
-	public static PrintStream out = null;
-	public static PrintStream err = null;
+	private static PrintStream out = null;
+	private static PrintStream err = null;
 	private static String _$1637 = null;
 	private static String _$1638 = null;
 
@@ -125,7 +125,7 @@ public class ServerConfig
 	public static void debug(Object paramObject)
 	{
 		if ((_$998) && (out != null))
-			out.println("[Debug: " + new Date() + "]  " + paramObject);
+			out.println("[" + new Date() + "]  " + paramObject);
 	}
 
 	public static void err(Object paramObject)

@@ -167,7 +167,7 @@ public class Tool
 				}
 		} catch (Exception localException)
 		{
-			localException.printStackTrace(ServerConfig.err);
+			//localException.printStackTrace(ServerConfig.err);
 		} finally
 		{
 			if (localFileInputStream != null)

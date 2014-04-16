@@ -43,7 +43,6 @@ public class LoginServlet extends HttpServlet
 		if (UserModel.login(s, s1, null, true, request))
 		{
 			Tool.GoToURL(Admin_Index, response);
-			ServerConfig.debug("sucess");
 		} else
 		{
 			Tool.GoToURL(Admin_Login, response);
