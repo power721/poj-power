@@ -267,14 +267,14 @@ public class Judge extends Thread
 			localObject1 = "Main";
 			long l1 = LanguageType.getExtMemory(paramRunRecord.language);
 			localOutputStream.write(((paramRunRecord.memory_limit + l1) * 1024L + "\n").getBytes());
-			ServerConfig.debug((paramRunRecord.memory_limit + l1) * 1024L + "");
+			ServerConfig.debug("Memory Limit: " + (paramRunRecord.memory_limit + l1) * 1024L + "");
 			String str1 = LanguageType.getRunCmd(localFile3.getAbsolutePath(), (String) localObject1, paramRunRecord.language);
 			localOutputStream.write((str1 + "\n").getBytes());
-			ServerConfig.debug(str1 + "");
+			ServerConfig.debug("Run cmd: " + str1 + "");
 			localOutputStream.write((localFile3.getAbsolutePath() + "\n").getBytes());
-			ServerConfig.debug(localFile3.getAbsolutePath());
+			ServerConfig.debug("Work Path: " + localFile3.getAbsolutePath());
 			localOutputStream.write((localArrayList1.size() + "\n").getBytes());
-			ServerConfig.debug(localArrayList1.size() + "");
+			ServerConfig.debug("Datd Files: " + localArrayList1.size() + "");
 			long l2 = 0L;
 			long l3 = 0L;
 			try
