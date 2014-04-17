@@ -174,7 +174,16 @@ public class Judge extends Thread
 	{
 		RunRecord localRunRecord = new RunRecord();
 		localRunRecord.solution_id = paramLong1;
-		File localFile = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + localRunRecord.solution_id);
+		File localFile = null;
+		if (paramLong2 == 0L)
+		{
+			localFile = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + paramLong1);
+		}
+		else
+		{
+			localFile = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) 
+					+ "c" + paramLong2 + "//" + paramLong1);
+		}
 		Tool.delete(localFile);
 		localRunRecord.isRejudge = true;
 		PreparedStatement localPreparedStatement = paramConnection.prepareStatement("select * from solution where solution_id=?");
@@ -223,7 +232,10 @@ public class Judge extends Thread
 				RunProcess(localRunRecord, paramConnection);
 		}
 		localPreparedStatement.close();
-		Tool.delete(localFile);
+		if (paramLong2 == 0L)
+		{
+			Tool.delete(localFile);
+		}
 	}
 
 	public static boolean RunProcess(RunRecord paramRunRecord, Connection paramConnection) throws Exception
