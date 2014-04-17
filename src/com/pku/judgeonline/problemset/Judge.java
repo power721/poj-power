@@ -411,7 +411,7 @@ public class Judge extends Thread
 		File localFile2 = null;
 		if (paramRunRecord.contest_id == null)
 		{
-			File localFile1 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + (paramRunRecord.solution_id - 1L));
+			File localFile1 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + (paramRunRecord.solution_id - 5L));
 			Tool.delete(localFile1);
 			localFile2 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + paramRunRecord.solution_id);
 		}
@@ -421,7 +421,7 @@ public class Judge extends Thread
 					+ "c" + paramRunRecord.contest_id + "//" + paramRunRecord.solution_id);
 		}
 		String str1 = "Main";
-		if (!localFile2.mkdirs())
+		if (!localFile2.isDirectory() && !localFile2.mkdirs())
 		{
 			ServerConfig.debug("can't make directory:"+localFile2.getAbsolutePath());
 			return false;
