@@ -387,9 +387,18 @@ public class Judge extends Thread
 
 	public static boolean Compile(RunRecord paramRunRecord, Connection paramConnection) throws Exception
 	{
-		File localFile1 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + (paramRunRecord.solution_id - 1L));
-		Tool.delete(localFile1);
-		File localFile2 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + paramRunRecord.solution_id);
+		File localFile2 = null;
+		if (paramRunRecord.contest_id == null)
+		{
+			File localFile1 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + (paramRunRecord.solution_id - 1L));
+			Tool.delete(localFile1);
+			localFile2 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + paramRunRecord.solution_id);
+		}
+		else
+		{
+			localFile2 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) 
+					+ "c" + paramRunRecord.contest_id + "//" + paramRunRecord.solution_id);
+		}
 		String str1 = "Main";
 		if (!localFile2.mkdirs())
 		{

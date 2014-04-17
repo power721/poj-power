@@ -302,7 +302,7 @@ public class FormattedOut
 		out.println("       <span id=\"divPageLoadTime\">");
 		out.println(System.currentTimeMillis() - ServerConfig.startTimestamp);
 		out.println(" ms</span><br>");
-		out.println("       All Copyright Reserved 2010-2012 <a href=mailto:power0721@gmail.com><b>power721</b></a><br>");
+		out.println("       All Copyright Reserved 2010-2014 <a href=mailto:power0721@gmail.com><b>power721</b></a><br>");
 		out.println(new StringBuilder().append("       Any problem, Please <a href=mailto:").append(ServerConfig.getValue("AdminEmail")).append(">Contact Administrator</a>").toString());
 		out.println("     </div>");
 		out.println("   </div><!-- div footer -->\n");
@@ -331,7 +331,7 @@ public class FormattedOut
 		out.println("         <A href=bbs>Web Board</A><br>");
 		out.println("         <A href=./>Home Page</A><br>");
 		out.println("         <A href=faq.htm target=_blank>F.A.Q</A><br>");
-		out.println("         <A href=../judge><font color=red>Virtual Judge</font></A>");
+		//out.println("         <A href=../judge><font color=red>Virtual Judge</font></A>");
 		out.println("       </td>");
 		out.println("       <td class=Navigation>");
 		out.println("         <form method=get action=gotoproblem>");
