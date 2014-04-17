@@ -261,7 +261,16 @@ public class Judge extends Thread
 		localOutputStream.write((paramRunRecord.time_limit * LanguageType.getTimeFactor(paramRunRecord.language) + i * LanguageType.getExtTime(paramRunRecord.language) + "\n").getBytes());
 		localOutputStream.write((paramRunRecord.case_time_limit * LanguageType.getTimeFactor(paramRunRecord.language) + LanguageType.getExtTime(paramRunRecord.language) + "\n").getBytes());
 		ServerConfig.debug(paramRunRecord.time_limit + "");
-		File localFile3 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + paramRunRecord.solution_id);
+		File localFile3 = null;
+		if (paramRunRecord.contest_id == null)
+		{
+			localFile3 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) + paramRunRecord.solution_id);
+		}
+		else
+		{
+			localFile3 = new File(Tool.fixPath(ServerConfig.getValue("WorkingPath")) 
+					+ "c" + paramRunRecord.contest_id + "//" + paramRunRecord.solution_id);
+		}
 		try
 		{
 			localObject1 = "Main";
