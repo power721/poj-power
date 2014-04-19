@@ -171,7 +171,7 @@ public class FormattedOut
 	public static void printHead(PrintWriter out, HttpServletRequest request, Connection connection, String s)
 	{
 		printSimpleHead(out, s);
-		printNavigation(out);
+		printNavigation(request, out);
 		out.println("       <td class=\"Navigation\">");
 		boolean flag = false;
 		boolean flag1 = false;
@@ -310,7 +310,7 @@ public class FormattedOut
 		out.println("</html>");
 	}
 	
-	public static void printNavigation(PrintWriter out)
+	public static void printNavigation(HttpServletRequest request, PrintWriter out)
 	{
 		out.println("");
 		out.println("   <table align=center width=99% border=1 bordercolor=#FFFFFF style=\"border-collapse: collapse\">");
@@ -345,7 +345,10 @@ public class FormattedOut
 		out.println("       </td>");
 		out.println("       <td class=Navigation>");
 		out.println("         <form method=GET action=searchuser>");
-		out.println("           <a href=registerpage>Register</a><br>");
+		if (request != null && !UserModel.isLoginned(request))
+		{
+			out.println("           <a href=registerpage>Register</a><br>");
+		}
 		out.println("           <a href=modifyuserpage>Update your info</a><br>");
 		out.println("           <a href=userlist>User ranklist</a><br>");
 		out.println("           <input type=text name=user_id size=10>");
