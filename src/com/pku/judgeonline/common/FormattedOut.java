@@ -239,9 +239,9 @@ public class FormattedOut
 				String url = request.getRequestURI();
 				if (request.getQueryString() != null)
 					url = new StringBuilder().append(url).append("?").append(request.getQueryString()).toString();
-				out.println("        <form method=\"POST\" action=\"login?action=login\">");
-				out.println("          User  &nbsp;&nbsp;ID:&nbsp;<input type=text name=user_id1 size=10><br>");
-				out.println("          Password:<input type=password name=password1 size=10><br>");
+				out.println("        <form method=\"post\" action=\"login?action=login\">");
+				out.println("          User  &nbsp;&nbsp;ID:&nbsp;<input type=text name=user_id1 id=user_id size=10 required><br>");
+				out.println("          Password:<input type=password name=password1 id=password size=10 required><br>");
 				out.println("          <input type=Submit value=Login name=B1>&nbsp;&nbsp;&nbsp;&nbsp;");
 				out.println("          <input type=button value=Register name=B2 onclick=\"location.href='registerpage'\" />");
 				out.println((new StringBuilder()).append("          <input type=hidden name=url value=\"").append(Tool.urlEncode(url)).append("\">").toString());

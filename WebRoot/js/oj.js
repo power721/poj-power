@@ -187,6 +187,23 @@ function modifyValidate() {
   return true;
 }
 
+function loginValidate() {
+  var userId = $("#user_id").val();
+  var patrn = /^[0-9_A-Za-z]{1,20}$/;
+  if (!patrn.test(userId)) {
+    $("#user_id").focus();
+    alert("用户名长度应该在1到20之间, 只能包含字母、数字和_(下划线)。");
+    return false;
+  }
+  var password = $('#password').val();
+  if (password.length < 6 || password.length > 64) {
+    $("#password").focus();
+    alert("密码长度应该在6到64之间。");
+    return false;
+  }
+  return true;
+}
+
 function tick() {
   var today;
   today = new Date();
