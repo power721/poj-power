@@ -30,27 +30,7 @@ public class ValueCheck
 		for (int i = 0; i < s.length(); i++)
 		{
 			char c = s.toLowerCase().charAt(i);
-			if (c == '>')
-			{
-				ErrorProcess.Error("User ID can not contain \">\"", out);
-				return false;
-			}
-			if (c == '<')
-			{
-				ErrorProcess.Error("User ID can not contain \"<\"", out);
-				return false;
-			}
-			if (c == '#')
-			{
-				ErrorProcess.Error("User ID can not contain \">#\"", out);
-				return false;
-			}
-			if (c == '&')
-			{
-				ErrorProcess.Error("User ID can not contain \"&\"", out);
-				return false;
-			}
-			if ((c < 'a' || c > 'z') && (c > '9' || c < '0') && c != '_' && c != ' ')
+			if (!((c >= 'a' && c <= 'z') || (c <= '9' && c >= '0') || c == '_'))
 			{
 				ErrorProcess.Error("User ID can only contain number,letter and '_'", out);
 				return false;
@@ -73,23 +53,7 @@ public class ValueCheck
 		for (int i = 0; i < s.length(); i++)
 		{
 			char c = s.toLowerCase().charAt(i);
-			if (c == '>')
-			{
-				return false;
-			}
-			if (c == '<')
-			{
-				return false;
-			}
-			if (c == '#')
-			{
-				return false;
-			}
-			if (c == '&')
-			{
-				return false;
-			}
-			if ((c < 'a' || c > 'z') && (c > '9' || c < '0') && c != '_' && c != ' ')
+			if (!((c >= 'a' && c <= 'z') || (c <= '9' && c >= '0') || c == '_'))
 			{
 				return false;
 			}
@@ -105,7 +69,7 @@ public class ValueCheck
 			ErrorProcess.Error("Password can not be NULL", out);
 			return false;
 		}
-		if (s.getBytes().length > 20)
+		if (s.getBytes().length > 64)
 		{
 			ErrorProcess.Error("Password is too long", out);
 			return false;
@@ -115,7 +79,7 @@ public class ValueCheck
 			ErrorProcess.Error("Password is too short", out);
 			return false;
 		}
-		for (int i = 0; i < s.length(); i++)
+		/*for (int i = 0; i < s.length(); i++)
 		{
 			char c = s.charAt(i);
 			if (c == ' ')
@@ -123,7 +87,7 @@ public class ValueCheck
 				ErrorProcess.Error("Password can not contain blank", out);
 				return false;
 			}
-		}
+		}*/
 
 		return true;
 	}

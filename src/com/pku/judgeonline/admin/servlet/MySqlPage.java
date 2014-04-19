@@ -73,12 +73,12 @@ public class MySqlPage extends HttpServlet
 					preparedstatement.close();
 					return;
 				}
-				password = resultset.getString("password");
+				password = Tool.htmlEncode(resultset.getString("password"));
 				Connection.close();
 				preparedstatement.close();
 			}
 			PrintWriter.println("<center><TABLE cellSpacing=0 cellPadding=0 width=35% border=1 background=images/table_back.jpg style=\"border-collapse: collapse\" bordercolor=#FFFFFF>");
-			PrintWriter.println("<tr><td><form method=get action=admin.mysql>User ID:<input type=text name=user_id size=20 " + (user != null ? "value=" + user : "") + "></td><td><input type=Submit value=\"Find\">&nbsp;&nbsp;<input type=button value=Reset onclick=javascript:window.location.href=\"admin.mysql\"></form></td></tr>");
+			PrintWriter.println("<tr><td><form method=get action=admin.mysql>User ID:<input type=text name=user_id size=20 " + (user != null ? "value=\"" + user + "\"" : "") + "></td><td><input type=Submit value=\"Find\">&nbsp;&nbsp;<input type=button value=Reset onclick=javascript:window.location.href=\"admin.mysql\"></form></td></tr>");
 			PrintWriter.println("<tr><td>Password </td><td>" + (password == null ? "******" : password) + "</td></tr></table></center>");
 		} catch (Exception Exception)
 		{

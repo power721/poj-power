@@ -51,7 +51,7 @@ public class RegisterServlet extends HttpServlet
 		Timestamp localTimestamp = new Timestamp(System.currentTimeMillis());
 		if (!ValueCheck.checkId(str1, localPrintWriter))
 			return;
-		if ((str1.toUpperCase()).startsWith("TEAM"))
+		if ("admin".equalsIgnoreCase(str1) || (str1.toUpperCase()).startsWith("TEAM"))
 		{
 			ErrorProcess.Error("You cann't register this ID!", localPrintWriter);
 			return;
