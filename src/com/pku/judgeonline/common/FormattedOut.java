@@ -336,7 +336,7 @@ public class FormattedOut
 		out.println("       <td class=Navigation>");
 		out.println("         <form method=get action=gotoproblem>");
 		out.println("           <A href=problemlist>Problems</A><br>");
-		out.println("           <A href=submitpage>Submit Problem</A><br>");
+		//out.println("           <A href=submitpage>Submit Problem</A><br>");
 		out.println("           <A href=status>Status (Online)</A><br>");
 		out.println("           <font color=blue>Prob.ID:</font>");
 		out.println("           <input type=text name=pid size=6>");
@@ -345,11 +345,14 @@ public class FormattedOut
 		out.println("       </td>");
 		out.println("       <td class=Navigation>");
 		out.println("         <form method=GET action=searchuser>");
-		if (request != null && !UserModel.isLoginned(request))
+		if (!UserModel.isLoginned(request))
 		{
 			out.println("           <a href=registerpage>Register</a><br>");
 		}
-		out.println("           <a href=modifyuserpage>Update your info</a><br>");
+		else
+		{
+			out.println("           <a href=modifyuserpage>Update your info</a><br>");
+		}
 		out.println("           <a href=userlist>User ranklist</a><br>");
 		out.println("           <input type=text name=user_id size=10>");
 		out.println("           <input type=hidden name=manner value=0>");
