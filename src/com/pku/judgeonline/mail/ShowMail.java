@@ -76,7 +76,7 @@ public class ShowMail extends HttpServlet
 			}
 			out.println("<table class=mail align=center width=99% border=0>");
 			out.println("<tr class=\"mail-head\" bgcolor=#c0c0c0><td>");
-			out.println((new StringBuilder()).append("From:<a href=userstatus?user_id=").append(resultset.getString("from_user")).append("><font size=4>").append(resultset.getString("from_user")).append("</font></a><br>").toString());
+			out.println((new StringBuilder()).append("From:<a href=\"userstatus?user_id=").append(resultset.getString("from_user")).append("\"><font size=4>").append(resultset.getString("from_user")).append("</font></a><br>").toString());
 			out.println((new StringBuilder()).append("Title:<font color=blue>").append(Tool.titleEncode(resultset.getString("title"))).append("</font><br>").toString());
 			out.println((new StringBuilder()).append("Send Time:").append(resultset.getTimestamp("in_date")).append("<br>").toString());
 			out.println("</td></tr>");
@@ -94,7 +94,7 @@ public class ShowMail extends HttpServlet
 				if(resultset.next())
 				{
 					out.println("<tr class=\"reply-mail reply-mail-head\"><td>");
-					out.println((new StringBuilder()).append("From:<a href=userstatus?user_id=").append(resultset.getString("from_user")).append("><font size=4>").append(resultset.getString("from_user")).append("</font></a><br>").toString());
+					out.println((new StringBuilder()).append("From:<a href=\"userstatus?user_id=").append(resultset.getString("from_user")).append("\"><font size=4>").append(resultset.getString("from_user")).append("</font></a><br>").toString());
 					out.println((new StringBuilder()).append("Title:<font color=blue>").append(Tool.titleEncode(resultset.getString("title"))).append("</font><br>").toString());
 					out.println((new StringBuilder()).append("Send Time:").append(resultset.getTimestamp("in_date")).append("<br>").toString());
 					out.println("</td></tr>");

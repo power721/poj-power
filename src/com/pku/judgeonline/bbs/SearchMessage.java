@@ -113,7 +113,7 @@ public class SearchMessage extends HttpServlet
 				if (l6 != 0L && l10 != l6 && l5 == 0L)
 					out.print("<hr>");
 				l6 = l10;
-				out.print((new StringBuilder()).append("<li><img src=./images/comments.gif><a href=showmessage?message_id=").append(l9).append("><font color=blue>").append(Tool.titleEncode(s4)).append("</font></a> <b><a href=userstatus?user_id=").append(s5).append("><font color=black>").append(s5).append("</font></a></b> ").append(timestamp).toString());
+				out.print((new StringBuilder()).append("<li><img src=./images/comments.gif><a href=showmessage?message_id=").append(l9).append("><font color=blue>").append(Tool.titleEncode(s4)).append("</font></a> <b><a href=\"userstatus?user_id=").append(s5).append("\"><font color=black>").append(s5).append("</font></a></b> ").append(timestamp).toString());
 				boolean flag = UserModel.isAdminLoginned(request);
 				if (flag)
 					out.println((new StringBuilder()).append("<a href=\"javascript:void(0);\"onclick=\"if(confirm('Are you sure?'))location='delmessage?message_id=").append(l9).append("'\"><b>Del</b></a>\n").toString());

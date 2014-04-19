@@ -107,7 +107,7 @@ public class LoginLog extends HttpServlet
 				String s7 = getClientOS(s5);
 				out.println("<center><TABLE cellSpacing=0 cellPadding=0 width=70% border=1 background=images/table_back.jpg style=\"border-collapse: collapse\" bordercolor=#FFFFFF>");
 				out.println("<tr>");
-				out.println("<td>User ID:</td><td><a href=userstatus?user_id=" + s1 + ">" + s1 + "</a></td>");
+				out.println("<td>User ID:</td><td><a href=\"userstatus?user_id=" + s1 + "\">" + s1 + "</a></td>");
 				out.println("</tr>");
 				out.println("<tr>");
 				out.println("<td>Time:</td><td>" + s2 + "</td>");
@@ -168,7 +168,7 @@ public class LoginLog extends HttpServlet
 				if (s3.equals("N"))
 					s4 = "<font color=red>Failed</font>";
 				out.println("<td width=\"10%\" align=\"center\">" + i + "</td>");
-				out.println("<td><a href=userstatus?user_id=" + s5 + ">" + s5 + "</a></td>");
+				out.println("<td><a href=\"userstatus?user_id=" + s5 + "\">" + s5 + "</a></td>");
 				out.println("<td>" + s1 + "</td>");
 				out.println("<td>" + s2 + "</td>");
 				out.println("<td><a href=loginlog?user=" + s + "&log=" + l + "&op=" + op + "&id=" + log_id + ">" + s4 + "</a></td>");

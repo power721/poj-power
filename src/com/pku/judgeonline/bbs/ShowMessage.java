@@ -94,7 +94,7 @@ public class ShowMessage extends HttpServlet
 				FormattedOut.printContestHead(out, cid, "Detail of message", request);
 			out.println("<table align=center border=0 width=99% background=images/table_back.jpg><tr><td>");
 			out.println((new StringBuilder()).append("<center><h2><font color=blue>").append(Tool.titleEncode(s)).append("</font></h2></center>").toString());
-			out.println((new StringBuilder()).append("Posted by <b><a href=userstatus?user_id=").append(s3).append("><font color=blue>").append(s3).append("</font></a></b>").toString());
+			out.println((new StringBuilder()).append("Posted by <b><a href=\"userstatus?user_id=").append(s3).append("\"><font color=blue>").append(s3).append("</font></a></b>").toString());
 			out.println((new StringBuilder()).append("at ").append(timestamp).toString());
 			if (l1 != 0L)
 			{
@@ -116,7 +116,7 @@ public class ShowMessage extends HttpServlet
 					String s5 = resultset.getString("user_id");
 					Timestamp timestamp1 = resultset.getTimestamp("in_date");
 					out.println((new StringBuilder()).append("<br>In Reply To:<a href=showmessage?message_id=").append(l3).append("><font color=blue>").append(Tool.titleEncode(s4)).append("</font></a>").toString());
-					out.println((new StringBuilder()).append("Posted by:<b><a href=userstatus?user_id=").append(s5).append("><font color=black>").append(s5).append("</font></a></b>").toString());
+					out.println((new StringBuilder()).append("Posted by:<b><a href=\"userstatus?user_id=").append(s5).append("\"><font color=black>").append(s5).append("</font></a></b>").toString());
 					out.println((new StringBuilder()).append("at ").append(timestamp1).toString());
 				}
 			}
@@ -155,7 +155,7 @@ public class ShowMessage extends HttpServlet
 					out.print("</ul>");
 
 				out.println((new StringBuilder()).append("<li><a href=showmessage?message_id=").append(l11).append("><font color=blue>").append(Tool.titleEncode(s7)).append("</font></a>").toString());
-				out.println((new StringBuilder()).append(" -- <b><a href=userstatus?user_id=").append(s6).append("><font color=black>").append(s6).append("</font></a></b>").toString());
+				out.println((new StringBuilder()).append(" -- <b><a href=\"userstatus?user_id=").append(s6).append("\"><font color=black>").append(s6).append("</font></a></b>").toString());
 				out.println(timestamp2);
 				l4 = l8;
 

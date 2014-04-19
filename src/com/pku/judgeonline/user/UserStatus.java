@@ -179,22 +179,22 @@ public class UserStatus extends HttpServlet
 				out.println((new StringBuilder()).append("<td align=center width=25%><font color=red>").append(k).append("</font></td>").toString());
 				out.println("<td width=60% align=center>Solved Problems List</td> </tr>");
 				out.println("<tr><td width=15% align=left>Solved:</td>");
-				out.println((new StringBuilder()).append("<td align=center width=25%><a href=status?result=0&user_id=").append(s).append(">").append(i).append("</a></td>").toString());
+				out.println((new StringBuilder()).append("<td align=center width=25%><a href=\"status?result=0&user_id=").append(s).append("\">").append(i).append("</a></td>").toString());
 				out.println("<td width=60% align=center rowspan="+(qq!=0?5:4)+">");
 				PreparedStatement preparedstatement1 = connection.prepareStatement("select problem_id from solution where user_id=? and result=0 group by problem_id");
 				preparedstatement1.setString(1, s);
 				ResultSet resultset1;
 				int i1;
-				for (resultset1 = preparedstatement1.executeQuery(); resultset1.next(); out.println((new StringBuilder()).append("<a href=status?problem_id=").append(i1).append((new StringBuilder()).append("&user_id=").append(s).append("&result=0&language=>").toString()).append(i1).append(" </a>").toString()))
+				for (resultset1 = preparedstatement1.executeQuery(); resultset1.next(); out.println((new StringBuilder()).append("<a href=\"status?problem_id=").append(i1).append((new StringBuilder()).append("&user_id=").append(s).append("&result=0&language=\">").toString()).append(i1).append(" </a>").toString()))
 					i1 = resultset1.getInt("problem_id");
 
 				resultset1.close();
 				preparedstatement1.close();
 				out.println("</td></tr>");
 				out.println("<tr><td width=15% align=left>Submissions:</td>");
-				out.println((new StringBuilder()).append("<td align=center width=25%><a href=status?user_id=").append(s).append(">").append(j).append("</a></td></tr>").toString());
+				out.println((new StringBuilder()).append("<td align=center width=25%><a href=\"status?user_id=").append(s).append("\">").append(j).append("</a></td></tr>").toString());
 				out.println("<tr><td width=15% align=left>School:</td>");
-				out.println((new StringBuilder()).append((new StringBuilder()).append("<td align=center width=25%><a href=searchuser?user_id=").append(Tool.urlEncode(s3)).append("&manner=4>").toString()).append(Tool.titleEncode(connection, s, s3)).append("</a></td></tr>").toString());
+				out.println((new StringBuilder()).append((new StringBuilder()).append("<td align=center width=25%><a href=\"searchuser?user_id=").append(Tool.urlEncode(s3)).append("&manner=4\">").toString()).append(Tool.titleEncode(connection, s, s3)).append("</a></td></tr>").toString());
 				out.println("<tr><td width=15% align=left>Email:</td>");
 				out.println((new StringBuilder()).append("<td align=center width=25%>").append(Tool.titleEncode(s1)).append("</td></tr>").toString());
 
@@ -221,7 +221,7 @@ public class UserStatus extends HttpServlet
 					else
 						s7 = "#78C8FF";
 					out.println((new StringBuilder()).append("<tr bgcolor=").append(s7).append("><td width=10%>").append(j1).append("</td>").toString());
-					out.println((new StringBuilder()).append("<td width=40%><a href=userstatus?user_id=").append(resultset.getString("user_id")).append(">").append(resultset.getString("user_id")).append("</a></td>").toString());
+					out.println((new StringBuilder()).append("<td width=40%><a href=\"userstatus?user_id=").append(resultset.getString("user_id")).append("\">").append(resultset.getString("user_id")).append("</a></td>").toString());
 					out.println((new StringBuilder()).append("<td width=25%>").append(resultset.getInt("solved")).append("</td>").toString());
 					out.println((new StringBuilder()).append("<td width=25%>").append(resultset.getInt("submit")).append("</td></tr>").toString());
 					j1++;

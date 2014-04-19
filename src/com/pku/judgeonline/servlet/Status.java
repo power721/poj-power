@@ -420,7 +420,7 @@ public class Status extends HttpServlet
 						s16 = s11;
 					else
 						s16 = (s1 == null ? s12 + ":" : "") + (char) (j2 + 65);
-					out.print("<td><a href=userstatus?user_id=" + s10 + ">" + s10 + "</a></td><td><a href=showproblem?problem_id=" + (flag7 && (s1 == null || j2 == -1) ? s11 : j2 + "&contest_id=" + s12) + ">" + s16 + "</a></td>");
+					out.print("<td><a href=\"userstatus?user_id=" + s10 + "\">" + s10 + "</a></td><td><a href=showproblem?problem_id=" + (flag7 && (s1 == null || j2 == -1) ? s11 : j2 + "&contest_id=" + s12) + ">" + s16 + "</a></td>");
 					if (k2 != 7)
 						out.print("<td><font color=" + s15 + ">" + ResultType.getResultDescript(k2) + "</font></td>");
 					else

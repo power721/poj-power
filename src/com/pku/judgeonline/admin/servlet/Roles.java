@@ -182,7 +182,7 @@ public class Roles extends HttpServlet
 					String str3 = resultset.getString("user_id");
 					String str4 = resultset.getString("rightstr");
 					out.println("<td width=\"5%\" align=\"center\">" + l2 + "</td>");
-					out.println("<td><a href=userstatus?user_id=" + str3 + ">" + str3 + "</a></td>");
+					out.println("<td><a href=\"userstatus?user_id=" + str3 + "\">" + str3 + "</a></td>");
 					out.println("<td><font color=green>" + Tool.titleEncode(str4) + "</font></td>");
 					boolean flag4 = str4.equalsIgnoreCase("source_browser") || str4.equalsIgnoreCase("title") || (!str4.equalsIgnoreCase("root") && UserModel.isRoot(request));
 					out.println("<td>" + (flag4 ? "<a href=javascript:roledel(\"" + str3 + "\",\"" + str4 + "\")>" : "") + "Del" + (flag4 ? "</a>" : "") + "</td>");

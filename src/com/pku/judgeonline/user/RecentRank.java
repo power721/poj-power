@@ -89,7 +89,7 @@ public class RecentRank extends HttpServlet
 			{
 				String s = resultset.getString("user_id");
 				out.println((new StringBuilder()).append("<tr align=center><td>").append(i++).append("</td>").toString());
-				out.print((new StringBuilder()).append("<td><a href=userstatus?user_id=").append(s).append(">").append(s).append("</a></td>").toString());
+				out.print((new StringBuilder()).append("<td><a href=\"userstatus?user_id=").append(s).append("\">").append(s).append("</a></td>").toString());
 				out.print((new StringBuilder()).append("<td><font color=green>").append(resultset.getString("nick")).append("</font></td>").toString());
 				out.print((new StringBuilder()).append("<td>").append(resultset.getLong("sol")).append("</td>").toString());
 			}

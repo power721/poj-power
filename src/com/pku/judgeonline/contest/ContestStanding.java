@@ -195,7 +195,7 @@ public class ContestStanding extends HttpServlet
 					 * (s5.equalsIgnoreCase("administrator")) flag3 = true; }
 					 */
 					//flag3 = UserModel.isAdminLoginned(request);
-					out.print((new StringBuilder()).append("<td><a href=userstatus?user_id=").append(s2).append(" title=").append(resultset.getString("user_id")).append((new StringBuilder()).append(">").append(Tool.isAdmin(connection, s2) ? "<font color=red>*</font>" : "").toString()).append(Tool.titleEncode(connection, s2, s3)).append("</a></td><td><a href=conteststatus?user_id=").append(s2).append("&contest_id=").append(resultset.getLong("contest_id")).append(">").append(resultset.getString("accepts")).append("</a></td>").toString());
+					out.print((new StringBuilder()).append("<td><a href=\"userstatus?user_id=").append(s2).append("\" title=\"").append(resultset.getString("user_id")).append((new StringBuilder()).append("\">").append(Tool.isAdmin(connection, s2) ? "<font color=red>*</font>" : "").toString()).append(Tool.titleEncode(connection, s2, s3)).append("</a></td><td><a href=\"conteststatus?user_id=").append(s2).append("&contest_id=").append(resultset.getLong("contest_id")).append("\">").append(resultset.getString("accepts")).append("</a></td>").toString());
 					long l6 = resultset.getLong("penalty");
 					out.print((new StringBuilder()).append("<td>").append(Tool.formatTime(l6)).append("</td>").toString());
 					for (int k = 0; k < i; k++)

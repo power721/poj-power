@@ -245,7 +245,7 @@ public class ShowSource extends HttpServlet
 			{
 				PrintWriter.println("Contest:<a href=showcontest?contest_id="+cid+">"+cid+"</a>&nbsp;&nbsp;Problem: </font>"+(char)(num+65)+"<br>\n");
 			}
-			PrintWriter.println("<font color=#006600>Problem ID:<a href=showproblem?problem_id=" + pid + (pid <= 26 ? "&contest_id=" + str7 : "") + ">" + spid + "</a>" + "&nbsp;&nbsp;User ID:</font><a href=userstatus?user_id=" + ResultSet1.getString("user_id") + "><font size=4>" + ResultSet1.getString("user_id") + "</font></a>");
+			PrintWriter.println("<font color=#006600>Problem ID:<a href=showproblem?problem_id=" + pid + (pid <= 26 ? "&contest_id=" + str7 : "") + ">" + spid + "</a>" + "&nbsp;&nbsp;User ID:</font><a href=\"userstatus?user_id=" + ResultSet1.getString("user_id") + "\"><font size=4>" + ResultSet1.getString("user_id") + "</font></a>");
 			PrintWriter.println("<br><font color=#006600>Memory:</font>" + ResultSet1.getString("memory") + "K&nbsp;&nbsp;<font color=#006600>Time:</font>" + ResultSet1.getString("time") + "MS<br>");
 			PrintWriter.println("<font color=#006600>Language:</font>" + (Object4 = LanguageType.getDesc(ResultSet1.getInt("language"))) + "&nbsp;&nbsp;<font color=#006600>Result:</font><font color=red>" + ResultType.getResultDescript(ResultSet1.getInt("result")) + "</font>");
 			CEflag = ResultType.getResult(ResultSet1.getInt("result")).equals("CE");

@@ -249,11 +249,11 @@ public class ProblemStatus extends HttpServlet
 				int i1 = resultset.getInt("n");
 				String s11 = "";
 				if (id != 0L)
-					s11 = (new StringBuilder()).append("<a href=conteststatus?problem_id=").append(pid).append("&user_id=").append(s6).append("&contest_id=").append(id).append("&result=0&language=").append(l4 == -1L ? "" : ((Object) (Long.valueOf(l4)))).append(">").toString();
+					s11 = (new StringBuilder()).append("<a href=\"conteststatus?problem_id=").append(pid).append("&user_id=").append(s6).append("&contest_id=").append(id).append("&result=0&language=").append(l4 == -1L ? "" : ((Object) (Long.valueOf(l4)))).append("\">").toString();
 				else
-					s11 = (new StringBuilder()).append("<a href=status?problem_id=").append(pid).append("&user_id=").append(s6).append("&result=0&language=").append(l4 == -1L ? "" : ((Object) (Long.valueOf(l4)))).append(">").toString();
+					s11 = (new StringBuilder()).append("<a href=\"status?problem_id=").append(pid).append("&user_id=").append(s6).append("&result=0&language=").append(l4 == -1L ? "" : ((Object) (Long.valueOf(l4)))).append("\">").toString();
 				out.print((new StringBuilder()).append("<tr align=center><td>").append(l9).append((new StringBuilder()).append("</td><td>").append(i1 > 1 ? s11 : "").toString()).append(s4).append(i1 > 1 ? (new StringBuilder()).append("(").append(i1).append(")").toString() : (new StringBuilder()).append("").append(i1 > 1 ? "</a>" : "").append("</td>").toString()).toString());
-				out.print((new StringBuilder()).append("<td><a href=userstatus?user_id=").append(s6).append(">").append(s6).append("</a></td>").toString());
+				out.print((new StringBuilder()).append("<td><a href=\"userstatus?user_id=").append(s6).append("\">").append(s6).append("</a></td>").toString());
 				if (flag3 || l1 == 0L)
 					out.print((new StringBuilder()).append("<td>").append(s7).append("K</td><td>").append(s8).append("MS</td>").toString());
 				else

@@ -202,7 +202,7 @@ public class BBS extends HttpServlet
 				if (l7 != 0L && l11 != l7 && l6 == 0L)
 					out.print("<hr>");
 				l7 = l11;
-				out.print((new StringBuilder()).append("<li><img src=./images/comments.gif><a href=showmessage?message_id=").append(l10).append((new StringBuilder()).append("><font color=blue>").append(s8.equals("N") ? "" : "<del>").toString()).append(Tool.titleEncode(s6)).append((new StringBuilder()).append(s8.equals("N") ? "" : "</del>").append("</font></a> <b><a href=userstatus?user_id=").toString()).append(s7).append("><font color=black>").append(s7).append("</font></a></b> ").append(timestamp).toString());
+				out.print((new StringBuilder()).append("<li><img src=./images/comments.gif><a href=showmessage?message_id=").append(l10).append((new StringBuilder()).append("><font color=blue>").append(s8.equals("N") ? "" : "<del>").toString()).append(Tool.titleEncode(s6)).append((new StringBuilder()).append(s8.equals("N") ? "" : "</del>").append("</font></a> <b><a href=\"userstatus?user_id=").toString()).append(s7).append("\"><font color=black>").append(s7).append("</font></a></b> ").append(timestamp).toString());
 				if (flag)
 				{
 					out.println((new StringBuilder()).append((new StringBuilder()).append("<a href=javascript:cfdel(").append(l10).append(",").append(s8.equals("N") ? 0 : 1).append(")>").append(s8.equals("N") ? "Hide" : "Resume").append("</a>").toString()).toString());

@@ -61,7 +61,7 @@ public class ACShare extends HttpServlet
 			out.println("<tr>");
 			while (resultset.next())
 			{
-				out.println((new StringBuilder()).append("<td><a href=userstatus?user_id=").append(resultset.getString("user_id")).append(">").append(resultset.getString("user_id")).append("</a>(<a href=status?result=0&user_id=").append(resultset.getString("user_id")).append(">").append(resultset.getInt("solved")).append("</a>)</td>").toString());
+				out.println((new StringBuilder()).append("<td><a href=\"userstatus?user_id=").append(resultset.getString("user_id")).append("\">").append(resultset.getString("user_id")).append("</a>(<a href=\"status?result=0&user_id=").append(resultset.getString("user_id")).append("\">").append(resultset.getInt("solved")).append("</a>)</td>").toString());
 				if (j == 7)
 				{
 					out.println("</tr><tr>");

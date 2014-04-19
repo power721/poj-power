@@ -127,7 +127,7 @@ public class SourceBrowser extends HttpServlet
 					String str3 = resultset.getString("user_id");
 					String str4 = resultset.getString("rightstr");
 					PrintWriter.println("<td width=\"5%\" align=\"center\">" + l2 + "</td>");
-					PrintWriter.println("<td><a href=userstatus?user_id=" + str3 + ">" + str3 + "</a></td>");
+					PrintWriter.println("<td><a href=\"userstatus?user_id=" + str3 + "\">" + str3 + "</a></td>");
 					PrintWriter.println("<td><font color=green>" + Tool.titleEncode(str4) + "</font></td>");
 					boolean flag4 = str4.equalsIgnoreCase("source_browser") || str4.equalsIgnoreCase("title") || (!str4.equalsIgnoreCase("root") && UserModel.isRoot(paramHttpServletRequest));
 					PrintWriter.println("<td>" + (flag4 ? "<a href=javascript:sbdel(\"" + str3 + "\")>" : "") + "Del" + (flag4 ? "</a>" : "") + "</td>");

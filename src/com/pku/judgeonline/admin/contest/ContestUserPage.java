@@ -170,7 +170,7 @@ public class ContestUserPage extends HttpServlet
 					long l2 = i++;
 					String str3 = resultset.getString("user_id");
 					PrintWriter.println("<td width=\"5%\" align=\"center\">" + l2 + "</td>");
-					PrintWriter.println("<td><a href=userstatus?user_id=" + str3 + ">" + str3 + "</a></td>");
+					PrintWriter.println("<td><a href=\"userstatus?user_id=" + str3 + "\">" + str3 + "</a></td>");
 					// PrintWriter.println("<td><font color=green>" +
 					// Tool.titleEncode(str4) + "</font></td>");
 					PrintWriter.println("<td><a href=javascript:pcdel(\"" + str3 + "\"," + id + ")>Del</a></td>");

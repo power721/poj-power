@@ -127,7 +127,7 @@ public class SearchUser extends HttpServlet
 					else
 						s6 = "#78C8FF";
 					out.println((new StringBuilder()).append("<tr bgcolor=").append(s6).append("><td width=10%>").append(j).append("</td>").toString());
-					out.println((new StringBuilder()).append("<td><a href=userstatus?user_id=").append(resultset.getString("user_id")).append(">").append(resultset.getString("user_id")).append("</a></td>").toString());
+					out.println((new StringBuilder()).append("<td><a href=\"userstatus?user_id=").append(resultset.getString("user_id")).append("\">").append(resultset.getString("user_id")).append("</a></td>").toString());
 					out.println((new StringBuilder()).append("<td>").append(resultset.getString("nick")).append("</td>").toString());
 					out.println((new StringBuilder()).append("<td>").append(resultset.getString("school")).append("</td>").toString());
 					out.println((new StringBuilder()).append("<td>").append(resultset.getInt("solved")).append("</td>").toString());

@@ -69,7 +69,7 @@ public class OnlineUsersList extends HttpServlet
 					out.println(new StringBuilder().append("<tr><td width=8%>").append(s).append("</td>").toString());
 				}
 				else
-					out.println(new StringBuilder().append("<tr><td width=8%><a href=userstatus?user_id=").append(s).append(">").append(s).append("</a></td>").toString());
+					out.println(new StringBuilder().append("<tr><td width=8%><a href=\"userstatus?user_id=").append(s).append("\">").append(s).append("</a></td>").toString());
 				out.println(new StringBuilder().append("<td width=9%>").append(resultset.getString("time")).append("</td><td width=35%>").append(resultset.getString("user_agent")).append("</td><td><a href=").append(url).append(">").append(url).append("</td></tr>").toString());
 			}
 			out.println("</table></p>");

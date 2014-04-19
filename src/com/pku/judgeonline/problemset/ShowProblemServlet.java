@@ -368,7 +368,7 @@ public class ShowProblemServlet extends HttpServlet
 				{
 					out.println("<h2><a href=\"javascript:void(0)\" class=\"ProblemHead\">Recommend</a></h2>");
 					out.println("<div><pre>");
-					out.print((new StringBuilder()).append("<a href=userstatus?user_id=").append(s_recommend).append(">").append(s_recommend).append("</a>").toString());
+					out.print((new StringBuilder()).append("<a href=\"userstatus?user_id=").append(s_recommend).append("\">").append(s_recommend).append("</a>").toString());
 					out.println("</pre></div>");
 				}
 				if (j == -1)

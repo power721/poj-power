@@ -105,7 +105,7 @@ public class UserCmp extends HttpServlet
 			preparedstatement.close();
 			connection.close();
 			FormattedOut.printHead(out, request, connection, (new StringBuilder()).append(s).append(" vs ").append(s1).toString());
-			out.print((new StringBuilder()).append("<div align=center><font size=5 color=blue><a href=userstatus?user_id=").append(s).append(">").append(s).append("</a> vs <a href=userstatus?user_id=").append(s1).append(">").append(s1).append("</a></font></div>").toString());
+			out.print((new StringBuilder()).append("<div align=center><font size=5 color=blue><a href=\"userstatus?user_id=").append(s).append("\">").append(s).append("</a> vs <a href=\"userstatus?user_id=").append(s1).append("\">").append(s1).append("</a></font></div>").toString());
 			out.println("<TABLE align=center cellSpacing=0 cellPadding=0 width=600 border=1 background=images/table_back.jpg style=\"border-collapse: collapse\" bordercolor=#FFFFFF>");
 			out.print("<tr valign=bottom><td><br>");
 			out.print("<form action=usercmp method=get>");
@@ -113,8 +113,8 @@ public class UserCmp extends HttpServlet
 			out.print((new StringBuilder()).append("and <input type=text size=10 name=uid2 value=").append(s1).append(">").toString());
 			out.print("<input type=submit value=GO></form>");
 			out.print("</td></tr>");
-			s = (new StringBuilder()).append("<a href=userstatus?user_id=").append(s).append(">").append(s).append("</a>").toString();
-			s1 = (new StringBuilder()).append("<a href=userstatus?user_id=").append(s1).append(">").append(s1).append("</a>").toString();
+			s = (new StringBuilder()).append("<a href=\"userstatus?user_id=").append(s).append("\">").append(s).append("</a>").toString();
+			s1 = (new StringBuilder()).append("<a href=\"userstatus?user_id=").append(s1).append("\">").append(s1).append("</a>").toString();
 			out.println((new StringBuilder()).append("<tr bgcolor=#6589D1><td>Problems only ").append(s).append(" accepted:</td></tr><tr><td>").toString());
 			for (int k = 0; k < i; k++)
 				if (ac[k] == '\001' && ac1[k] != '\001')

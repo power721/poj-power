@@ -144,15 +144,15 @@ public class UserListServlet extends HttpServlet
 					if (resultset2.next())
 					{
 						if (resultset2.getString("rightstr").equalsIgnoreCase("Administrator"))
-							out.println((new StringBuilder()).append("<td class=\"user\"><a href=userstatus?user_id=").append(s6).append("><font color=red>").append(s6).append("</font></a></td>").toString());
+							out.println((new StringBuilder()).append("<td class=\"user\"><a href=\"userstatus?user_id=").append(s6).append("\"><font color=red>").append(s6).append("</font></a></td>").toString());
 						else
-							out.println((new StringBuilder()).append("<td class=\"user\"><a href=userstatus?user_id=").append(s6).append("><b>").append(s6).append("</b></a></td>").toString());
+							out.println((new StringBuilder()).append("<td class=\"user\"><a href=\"userstatus?user_id=").append(s6).append("\"><b>").append(s6).append("</b></a></td>").toString());
 					} else
-						out.println((new StringBuilder()).append("<td class=\"user\"><a href=userstatus?user_id=").append(s6).append(">").append(s6).append("</a></td>").toString());
+						out.println((new StringBuilder()).append("<td class=\"user\"><a href=\"userstatus?user_id=").append(s6).append("\">").append(s6).append("</a></td>").toString());
 					
 					out.println((new StringBuilder()).append("<td class=\"nick\"><font color=green>").append(Tool.titleEncode(connection, s6, s7)).append("</font></td>").toString());
-					out.println((new StringBuilder()).append("<td><a href=status?result=0&user_id=").append(s6).append(">").append(k).append("</a></td>").toString());
-					out.println((new StringBuilder()).append("<td><a href=status?user_id=").append(s6).append(">").append(i1).append("</a></td>").toString());
+					out.println((new StringBuilder()).append("<td><a href=\"status?result=0&user_id=").append(s6).append("\">").append(k).append("</a></td>").toString());
+					out.println((new StringBuilder()).append("<td><a href=\"status?user_id=").append(s6).append("\">").append(i1).append("</a></td>").toString());
 					out.println((new StringBuilder()).append("<td>").append(j1).append("%</td>").toString());
 					resultset2.close();
 					preparedstatement2.close();
