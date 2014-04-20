@@ -173,7 +173,7 @@ public class ShowProblemServlet extends HttpServlet
 
 			if (in_contest)
 			{
-				if (!b_start)
+				if ((s_cid == null || !b_admin) && !b_start)
 				{
 					ErrorProcess.Error("You cannot access this problem.", out);
 					resultset.close();

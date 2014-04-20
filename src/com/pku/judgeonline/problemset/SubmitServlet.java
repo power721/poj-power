@@ -40,7 +40,7 @@ public class SubmitServlet extends HttpServlet
 		paramHttpServletRequest.setCharacterEncoding("UTF-8");
 		PrintWriter localPrintWriter = paramHttpServletResponse.getWriter();
 		long pid = 0, l1, cid = 0L;
-		String str;
+		String cidStr = null;
 		try
 		{
 			String s_p = paramHttpServletRequest.getParameter("problem_id");
@@ -50,9 +50,9 @@ public class SubmitServlet extends HttpServlet
 				l1 = c - 'A';
 			} else
 				pid = l1 = Integer.parseInt(s_p);
-			str = paramHttpServletRequest.getParameter("contest_id");
-			if (str != null)
-				cid = Integer.parseInt(str);
+			cidStr = paramHttpServletRequest.getParameter("contest_id");
+			if (cidStr != null)
+				cid = Integer.parseInt(cidStr);
 		} catch (Exception localException1)
 		{
 			ErrorProcess.Error("Please choose problem", localPrintWriter);
@@ -149,6 +149,7 @@ public class SubmitServlet extends HttpServlet
 			int n = -1;
 			Timestamp localTimestamp2 = new Timestamp(System.currentTimeMillis());
 			localTimestamp1 = ServerConfig.getSystemTime();
+			boolean b_admin = UserModel.isAdminLoginned(paramHttpServletRequest);
 			if (str5 != null)
 			{
 				localPreparedStatement = localConnection.prepareStatement("select * from contest where contest_id=? and UPPER(defunct)='N'");
@@ -160,7 +161,7 @@ public class SubmitServlet extends HttpServlet
 					j = localResultSet.getTimestamp("start_time").getTime() <= localTimestamp1.getTime() ? 1 : 0;
 					k = localResultSet.getTimestamp("end_time").getTime() < localTimestamp1.getTime() ? 1 : 0;
 					m = localResultSet.getInt("private");
-					if (j == 0)
+					if (!b_admin && j == 0)
 					{
 						localPreparedStatement.close();
 						localConnection.close();
@@ -179,37 +180,41 @@ public class SubmitServlet extends HttpServlet
 					contest_only = false;
 				} else
 				{
-					localPreparedStatement = localConnection.prepareStatement("select num from contest_problem where contest_id=? and problem_id=?");
-					localPreparedStatement.setString(1, str5);
-					localPreparedStatement.setLong(2, pid);
+					
+				}
+			}
+			if (cid > 0L)
+			{
+				localPreparedStatement = localConnection.prepareStatement("select num from contest_problem where contest_id=? and problem_id=?");
+				localPreparedStatement.setLong(1, cid);
+				localPreparedStatement.setLong(2, pid);
+				localResultSet = localPreparedStatement.executeQuery();
+				if (localResultSet.next())
+					n = localResultSet.getInt("num");
+				localPreparedStatement.close();
+				synchronized (attend_mute)
+				{
+					localPreparedStatement = localConnection.prepareStatement("SELECT user_id FROM attend WHERE user_id = ? AND contest_id = ?");
+					localPreparedStatement.setString(1, str3);
+					localPreparedStatement.setLong(2, cid);
 					localResultSet = localPreparedStatement.executeQuery();
-					if (localResultSet.next())
-						n = localResultSet.getInt("num");
-					localPreparedStatement.close();
-					synchronized (attend_mute)
+					if (!localResultSet.next())
 					{
-						localPreparedStatement = localConnection.prepareStatement("SELECT user_id FROM attend WHERE user_id = ? AND contest_id = ?");
-						localPreparedStatement.setString(1, str3);
-						localPreparedStatement.setInt(2, Integer.parseInt(str5));
-						localResultSet = localPreparedStatement.executeQuery();
-						if (!localResultSet.next())
-						{
-							localPreparedStatement.close();
-							if (m != 0 && !Tool.permission(localConnection, paramHttpServletRequest, Integer.parseInt(str5)))
-							{
-
-								ErrorProcess.Error("<font size=4 color=red>Sorry,this contest isn't a public contest and you are not qualified to attend this contest.<br>If you sure it's wrong,please contact administrator.</font>", localPrintWriter);
-								localConnection.close();
-								return;
-							}
-							localPreparedStatement = localConnection.prepareStatement("INSERT INTO attend (user_id,contest_id,nick) VALUES(?,?,?)");
-							localPreparedStatement.setString(1, str3);
-							localPreparedStatement.setInt(2, Integer.parseInt(str5));
-							localPreparedStatement.setString(3, str4);
-							localPreparedStatement.executeUpdate();
-						}
 						localPreparedStatement.close();
+						if (m != 0 && !Tool.permission(localConnection, paramHttpServletRequest, cid))
+						{
+
+							ErrorProcess.Error("<font size=4 color=red>Sorry,this contest isn't a public contest and you are not qualified to attend this contest.<br>If you sure it's wrong,please contact administrator.</font>", localPrintWriter);
+							localConnection.close();
+							return;
+						}
+						localPreparedStatement = localConnection.prepareStatement("INSERT INTO attend (user_id,contest_id,nick) VALUES(?,?,?)");
+						localPreparedStatement.setString(1, str3);
+						localPreparedStatement.setLong(2, cid);
+						localPreparedStatement.setString(3, str4);
+						localPreparedStatement.executeUpdate();
 					}
+					localPreparedStatement.close();
 				}
 			}
 			if ((contest_only) && (str5 == null))
@@ -224,7 +229,7 @@ public class SubmitServlet extends HttpServlet
 			localPrintWriter.println("<font color=red>" + l5 + "</font>");
 			RunRecord localRunRecord = new RunRecord();
 			localRunRecord.solution_id = l5;
-			localRunRecord.contest_id = str5;
+			localRunRecord.contest_id = cidStr;
 			localRunRecord.ip = paramHttpServletRequest.getRemoteAddr();
 			localRunRecord.problem_id = pid;
 			localRunRecord.memory_limit = l2;
@@ -249,7 +254,7 @@ public class SubmitServlet extends HttpServlet
 			localPreparedStatement.setInt(i2++, 10000);
 			localPreparedStatement.setInt(i2++, i);
 			localPreparedStatement.setString(i2++, paramHttpServletRequest.getRemoteAddr());
-			localPreparedStatement.setString(i2++, str5);
+			localPreparedStatement.setString(i2++, cidStr);
 			localPreparedStatement.setInt(i2++, i1);
 			localPreparedStatement.setInt(i2++, n);
 			localPreparedStatement.executeUpdate();
@@ -288,10 +293,10 @@ public class SubmitServlet extends HttpServlet
 					judge = new Judge();
 				}
 			}
-			if (str5 == null)
+			if (cidStr == null)
 				Tool.GoToURL("status", paramHttpServletResponse);
 			else
-				Tool.GoToURL("conteststatus?contest_id=" + str5 + "&user_id=" + str3, paramHttpServletResponse);
+				Tool.GoToURL("conteststatus?contest_id=" + cidStr + "&user_id=" + str3, paramHttpServletResponse);
 			return;
 		} catch (Exception localException3)
 		{
