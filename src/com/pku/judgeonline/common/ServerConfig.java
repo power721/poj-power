@@ -27,6 +27,9 @@ public class ServerConfig
 	public static String DeveloperName = "Power721";
 	public static String SYSTEM_INFO = null;
 	public static String DEFAULT_TITLE = null;
+	public static String dataPath;
+	public static String workPath;
+	public static boolean isLinux = false;
 	@SuppressWarnings("unused") private static boolean _$1502 = false;
 	private static boolean _$998 = false;
 	private static long _$1621 = 0L;
@@ -41,6 +44,10 @@ public class ServerConfig
 	private static PrintStream err = null;
 	private static String _$1637 = null;
 	private static String _$1638 = null;
+	
+	static {
+		isLinux = System.getProperties().getProperty("os.name").indexOf("Linux") != -1;
+	}
 
 	public static void init()
 	{
@@ -104,6 +111,8 @@ public class ServerConfig
 			_$1637 = _$1612.getProperty("RunShell");
 			_$1638 = _$1612.getProperty("ComShell");
 			DEFAULT_TITLE = _$1612.getProperty("DefaultTitle");
+			dataPath = _$1612.getProperty("DataFilesPath");
+			workPath = _$1612.getProperty("WorkingPath");
 		} catch (FileNotFoundException localFileNotFoundException)
 		{
 			localFileNotFoundException.printStackTrace();

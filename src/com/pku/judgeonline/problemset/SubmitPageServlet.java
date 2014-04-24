@@ -127,7 +127,7 @@ public class SubmitPageServlet extends HttpServlet
 						return;
 					}
 				}
-				out.println("<input type=hidden name=contest_id value=" + l1 + ">");
+				out.println("<input type=hidden name=contest_id " + (l1>0L?"value="+l1:"") + ">");
 			}
 
 			// out.println((new

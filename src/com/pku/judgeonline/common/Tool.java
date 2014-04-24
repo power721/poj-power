@@ -437,7 +437,7 @@ public class Tool
 
 	public static String fixPath(String paramString)
 	{
-		return paramString + "\\";
+		return paramString + File.separator;
 	}
 
 	public static boolean permission(Connection connection, HttpServletRequest request, long contest_id)

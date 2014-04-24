@@ -1,7 +1,9 @@
 ﻿package com.pku.judgeonline.servlet;
 
 import com.pku.judgeonline.common.DBConfig;
+import com.pku.judgeonline.common.ServerConfig;
 import com.pku.judgeonline.problemset.Judge;
+import com.pku.judgeonline.problemset.LinuxJudge;
 
 import java.sql.*;
 
@@ -192,8 +194,17 @@ public class Rejudge extends Thread
 			}
 		preparedstatement = connection.prepareStatement("select solution_id from solution where problem_id=? and result<>10000  order by solution_id asc");
 		preparedstatement.setLong(1, l);
-		for (ResultSet resultset = preparedstatement.executeQuery(); resultset.next(); Judge.ReJudge(resultset.getLong("solution_id"), l1, connection))
-			;
+		if (ServerConfig.isLinux)
+		{
+			for (ResultSet resultset = preparedstatement.executeQuery(); resultset.next(); Judge.ReJudge(resultset.getLong("solution_id"), l1, connection))
+				;
+		}
+		else
+		{
+			for (ResultSet resultset = preparedstatement.executeQuery(); resultset.next(); LinuxJudge.ReJudge(resultset.getLong("solution_id"), l1, connection))
+				;
+		}
+		
 		preparedstatement.close();
 		synchronized (Judge.mute)
 		{
@@ -222,7 +233,15 @@ public class Rejudge extends Thread
 			{
 				FireProblemFromContest(pid, l1, connection);
 			}
-		Judge.ReJudge(l, l1, connection);
+		if (ServerConfig.isLinux)
+		{
+			LinuxJudge.ReJudge(l, l1, connection);
+		}
+		else
+		{
+			Judge.ReJudge(l, l1, connection);
+		}
+		
 		synchronized (Judge.mute)
 		{
 			CheckOnePS(pid, connection);

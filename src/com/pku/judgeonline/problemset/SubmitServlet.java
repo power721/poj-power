@@ -51,8 +51,10 @@ public class SubmitServlet extends HttpServlet
 			} else
 				pid = l1 = Integer.parseInt(s_p);
 			cidStr = paramHttpServletRequest.getParameter("contest_id");
-			if (cidStr != null)
+			if (cidStr != null && !"".equals(cidStr))
 				cid = Integer.parseInt(cidStr);
+			if (cid == 0L)
+				cidStr = null;
 		} catch (Exception localException1)
 		{
 			ErrorProcess.Error("Please choose problem", localPrintWriter);
@@ -284,15 +286,31 @@ public class SubmitServlet extends HttpServlet
 			}
 			localConnection.close();
 			localConnection = null;
-			synchronized (Judge.list)
+			if (ServerConfig.isLinux)
 			{
-				Judge.list.add(localRunRecord);
-				if (Judge.threads < 1)
+				synchronized (LinuxJudge.list)
 				{
-					Judge.threads += 1;
-					judge = new Judge();
+					LinuxJudge.list.add(localRunRecord);
+					if (LinuxJudge.threads < 1)
+					{
+						LinuxJudge.threads += 1;
+						LinuxJudge judge = new LinuxJudge();
+					}
 				}
 			}
+			else
+			{
+				synchronized (Judge.list)
+				{
+					Judge.list.add(localRunRecord);
+					if (Judge.threads < 1)
+					{
+						Judge.threads += 1;
+						judge = new Judge();
+					}
+				}
+			}
+			
 			if (cidStr == null)
 				Tool.GoToURL("status", paramHttpServletResponse);
 			else

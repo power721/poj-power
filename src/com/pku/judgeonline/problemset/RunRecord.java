@@ -12,7 +12,12 @@ public class RunRecord
 	public long memory_limit;
 	public long case_time_limit;
 	boolean isRejudge;
+	int result;
+	int time;
+	int memory;
 	String source;
+	String sourceFileName;
+	String workPath;
 	String input_path;
 	String output_path;
 	String user_id;

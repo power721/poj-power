@@ -11,8 +11,10 @@ public class ResultType
 	public static final int RunTimeError = 5;
 	public static final int OutputLimitOut = 6;
 	public static final int PresentationError = 1;
+	public static final int RestrictedFunction = 8;
 	public static final int SystemError = 98;
 	public static final int Other = 99;
+	public static final int Run = 100;
 	public static final int Wait = 10000;
 
 	public ResultType()
@@ -35,14 +37,18 @@ public class ResultType
 			return "RE";
 		if (i == 6)
 			return "OLE";
+		if (i == 8)
+			return "RF";
 		if (i == 1)
 			return "PE";
 		if (i == 10000)
 			return "Waiting";
 		if (i == 98)
-			return "System Error";
+			return "SE";
 		if (i == 99)
-			return "Validate Error";
+			return "VE";
+		if (i == 100)
+			return "Run";
 		else
 			return "Other";
 	}
@@ -63,6 +69,8 @@ public class ResultType
 			return "<font color=#bb338f>Runtime Error</font>";
 		if (i == 6)
 			return "<font color=#999999>Output Limit Exceed</font>";
+		if (i == 8)
+			return "Restricted Function";
 		if (i == 1)
 			return "<font color=#ff03fa>Presentation Error</font>";
 		if (i == 10000)
@@ -71,6 +79,8 @@ public class ResultType
 			return "<font color=black>System Error</font>";
 		if (i == 99)
 			return "Validate Error";
+		else if (i == 100)
+			return "Running";
 		else
 			return "Other";
 	}
