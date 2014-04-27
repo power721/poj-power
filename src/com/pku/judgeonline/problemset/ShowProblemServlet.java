@@ -384,7 +384,7 @@ public class ShowProblemServlet extends HttpServlet
 						{
 							String s_tag = resultset5.getString("tag");
 							String s_user = resultset5.getString("user_id");
-							out.print((new StringBuilder()).append("<a href=\"searchproblem?sstr=").append(s_tag).append("&manner=3 title=").append(s_user).append("\">").append(s_tag).append("</a>  ").toString());
+							out.print((new StringBuilder()).append("<a href=\"searchproblem?sstr=").append(s_tag).append("&manner=3&title=").append(s_user).append("\">").append(s_tag).append("</a>  ").toString());
 						} while (resultset5.next());
 					}
 					out.println("<br></div>");
