@@ -99,7 +99,7 @@ function checkPassword2() {
     return false;
   }
   var newPassword = $('#newPassword').val();
-  if (newPassword.length < 6 || newPassword.length > 64) {
+  if (newPassword && newPassword.length < 6 || newPassword.length > 64) {
     $("#newPassword").focus();
     alert("密码长度应该在6到64之间。");
     return false;
