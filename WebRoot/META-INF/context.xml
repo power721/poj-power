@@ -1,9 +1,12 @@
-﻿<Context docBase="poj-power" reloadable="true">
+﻿<Context docBase="oj" reloadable="true">
 
-<Resource name="jdbc/PojDB" auth="Container" type="javax.sql.DataSource"
-               maxActive="500" maxIdle="50" maxWait="20000"
-               username="root" password="" driverClassName="com.mysql.jdbc.Driver"
-			   removeAbandoned="true" removeAbandonedTimeout="60" logAbandoned="true"
-               url="jdbc:mysql://localhost:3306/poj-power?autoReconnect=true"/>
+<Resource name="jdbc/PojDB" 
+               auth="Container" type="javax.sql.DataSource"
+               factory="com.alibaba.druid.pool.DruidDataSourceFactory"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               testOnBorrow="false" initialSize="10" filters="stat"
+               username="root" password="" 
+               driverClassName="com.mysql.jdbc.Driver"
+			         removeAbandoned="true" removeAbandonedTimeout="60"
+               url="jdbc:mysql://localhost:3306/oj?autoReconnect=true"/>
 </Context>
-
